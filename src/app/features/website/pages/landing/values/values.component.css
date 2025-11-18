@@ -1,0 +1,80 @@
+:root{
+  --main:#788DA8;
+  --blue:#132539;
+  --sec:#101928;
+}
+
+/* ===== Section ===== */
+.values-section {
+  padding: 70px 0;
+  text-align: center;
+}
+
+.values-title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 40px;
+  background: linear-gradient(90deg, var(--main), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== Wrapper ===== */
+.values-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* ===== Card ===== */
+.value-card {
+  width: 200px;
+  background: #fff;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+  transition: .3s ease;
+  border-left: 5px solid var(--main);
+}
+
+.value-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 26px rgba(0,0,0,.10);
+  border-left-color: var(--blue);
+}
+
+/* ===== Icon ===== */
+.value-icon {
+  font-size: 22px;
+  color: var(--blue);
+  padding: 7px;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+}
+.value-card:hover .value-icon{
+    border: 1px solid var(--main);
+}
+/* ===== Text ===== */
+.value-card p {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sec);
+}
+
+/* ===== Responsive ===== */
+@media(max-width: 578px){
+  .value-card {
+    width: 90%;
+  }
+}

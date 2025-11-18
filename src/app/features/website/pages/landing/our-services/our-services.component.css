@@ -1,0 +1,96 @@
+
+
+
+
+/* ======= SECTION ======= */
+.services-section {
+  border-radius: 30px 30px 0 0;
+
+  padding: 80px 0;
+  background: #fff;
+}
+
+.services-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--blue);
+  margin-bottom: 40px;
+}
+
+.services-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* ======= CARD ======= */
+.service-card {
+  width: 300px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  padding-bottom: 25px;
+  transition: .3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+/* ======= HEADER GRADIENT ======= */
+.card-header {
+  height: 110px;
+  background: linear-gradient(90deg, var(--main), var(--blue));
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+/* ======= ICON CIRCLE ======= */
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid #fff;
+  font-size: 30px;
+  color: var(--blue);
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: .3s ease;
+}
+
+.service-card:hover .icon-circle {
+  background: var(--main);
+  color: #fff;
+}
+
+/* ======= GRADIENT TITLE ======= */
+.gradient-text {
+  margin-top: 60px;
+  font-size: 15px;
+color: var(--main);
+padding: 0 20px;
+}
+
+/* ======= RESPONSIVE ======= */
+@media(max-width: 768px){
+  .service-card{
+    width: 45%;
+  }
+}
+@media(max-width: 578px){
+  .service-card{
+    width: 100%;
+  }
+}

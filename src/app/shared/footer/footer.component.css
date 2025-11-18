@@ -1,0 +1,119 @@
+
+.main-footer {
+  background: #101928f5;
+  color: #fff;
+  padding: 60px 0 20px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}
+
+.footer-col {
+  flex: 1 1 220px;
+}
+
+.footer-brand {
+  max-width: 320px;
+}
+
+.footer-logo {
+  width: 200px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background: #fff;
+  padding: 5px 10px;
+}
+
+.footer-about {
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  opacity: .85;
+}
+
+.footer-social a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: var(--blue);
+  color: #fff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  transition: .3s;
+  font-size: 14px;
+}
+
+.footer-social a:hover {
+  background: var(--main);
+}
+
+.footer-col h4 {
+  margin-bottom: 15px;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--main);
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: #ddd;
+  font-size: 14px;
+  transition: .3s;
+}
+
+.footer-col ul li a:hover {
+  color: var(--main);
+}
+
+.footer-col p {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.footer-col p i {
+  margin-left: 6px;
+  color: var(--main);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 14px;
+  opacity: .7;
+}
+.footer-brand-name {
+  color: var(--main);
+  font-weight: 700;
+}
+
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    text-align: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+    display: flex;
+  }
+}

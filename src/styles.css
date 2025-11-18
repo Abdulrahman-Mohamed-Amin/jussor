@@ -1,0 +1,93 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
+
+
+@font-face {
+  font-family: 'NOOR';
+  src: url('assets/fonts/ArbFONTS-AGCLight.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NOOR';
+  src: url('assets/fonts/ArbFONTS-AGCRegular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NOOR';
+  src: url('assets/fonts/ArbFONTS-AGCBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+:root{
+    
+    --main:#788DA8;
+    --sec:#101928;
+    --blue:#132539;
+    --sec2:#E2E2E2;
+  --shadow:  0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+*{
+      transition: 0.3s;
+      direction: rtl;
+      font-family: 'NOOR', sans-serif;
+      box-sizing: border-box;
+}
+
+body{
+    background-image: url(assets/architecture-5999913_1280.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: left center;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+/* components */
+.title {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--blue);
+  margin:0 auto 50px;
+  position: relative;
+  width: fit-content;
+}
+
+.title::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: var(--main);
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 8px;
+}
+
+/* .title{
+    color: var(--main);
+    position: relative;
+    background: var(--sec2);
+    width: fit-content;
+    padding: 5px 15px;
+    border-radius: 15px;
+    margin: 0 auto 60px;
+    font-weight: bold;
+    font-size: 40px;
+} */
+
+
+.p-80{
+    padding: 80px 0;
+}
+/* components */

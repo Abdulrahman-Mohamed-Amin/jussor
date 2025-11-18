@@ -1,0 +1,17 @@
+<header class="bg-white p-3">
+    <div class="container">
+        <nav class="d-flex justify-content-between align-items-center">
+            <img src="assets/logo.webp " alt="logo">
+
+            <ul class="links" [ngClass]="{'open': close}">
+                <li class="active"><a href="">الرئيسية</a></li>
+                <li><a href="">من نحن</a></li>
+                <li><a href="">مشاريعنا</a></li>
+                <li><a href="">خدماتنا</a></li>
+                <li><a href="">اتصل بنا</a></li>
+                <i class="fas fa-xmark d-lg-none d-block close" (click)="close = false"></i>
+            </ul>
+            <i class="bar fas fa-bars d-lg-none d-block" (click)="close = true" ></i>
+        </nav>
+    </div>
+</header>

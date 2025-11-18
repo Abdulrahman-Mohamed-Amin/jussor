@@ -1,0 +1,100 @@
+
+/* ----- SECTION ----- */
+.about-section {
+  padding: 70px 0;
+}
+
+.about-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* ----- IMAGE + LAY SHAPE ----- */
+.about-image {
+  position: relative;
+  flex: 1;
+  min-width: 330px;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 35px;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+  height: 350px;
+}
+
+/* 🔥 الـ LAY EXACT */
+.about-lay {
+  position: absolute;
+  inset: 0;
+  background: var(--blue);
+  opacity: .55;
+  border-radius: 35px;
+
+  /* هنا السحر: نفس شكل الـ “نصف مثلث منحني” */
+  clip-path: polygon(
+    100% 0%,   /* يمين فوق */
+    65% 0%,    /* نقطة نزول */
+    40% 50%,   /* منتصف المثلث */
+    65% 100%,  /* نقطة صعود */
+    100% 100%  /* يمين تحت */
+  );
+}
+
+/* ----- TEXT INSIDE LAY ----- */
+.about-lay-title {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1.3;
+  z-index: 10;
+  text-align: right;
+  text-shadow: 0 3px 8px rgba(0,0,0,.35);
+}
+
+/* ----- PARAGRAPH ----- */
+.about-text {
+  flex: 1;
+  min-width: 330px;
+}
+
+.about-text p {
+  font-size: 17px;
+  line-height: 2;
+  color: #333;
+}
+
+
+/* ----- RESPONSIVE ----- */
+@media(max-width: 992px) {
+  .about-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-lay-title {
+    right: 50%;
+    transform: translate(50%, -50%);
+    text-align: center;
+  }
+}
+@media(max-width: 578px) {
+.about-text p{
+  font-size: 14px;
+}
+.about-image {
+  min-width: 95%;
+
+}
+.about-text {
+  flex: 1;
+  min-width: 95%;
+}
+}
