@@ -10,6 +10,7 @@
   background: #fff;
 }
 
+
 .services-title {
   font-size: 32px;
   font-weight: 800;
@@ -92,5 +93,8 @@ padding: 0 20px;
 @media(max-width: 578px){
   .service-card{
     width: 100%;
+  }
+  .services-section{
+      padding: 80px 10px;
   }
 }

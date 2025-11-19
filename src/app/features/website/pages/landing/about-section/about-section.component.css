@@ -79,13 +79,11 @@
     text-align: center;
   }
 
-  .about-lay-title {
-    right: 50%;
-    transform: translate(50%, -50%);
-    text-align: center;
-  }
 }
 @media(max-width: 578px) {
+  .about-lay-title{
+    font-size: 25px;
+  }
 .about-text p{
   font-size: 14px;
 }
