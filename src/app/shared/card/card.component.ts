@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { DashboardRoutingModule } from "../../features/dashboard/dashboard-routing.module";
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [],
+  imports: [DashboardRoutingModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css'
 })

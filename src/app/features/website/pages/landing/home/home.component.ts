@@ -9,11 +9,12 @@ import { FooterComponent } from "../../../../../shared/footer/footer.component";
 import { AboutSectionComponent } from "../about-section/about-section.component";
 import { ValuesComponent } from "../values/values.component";
 import { ContactSecComponent } from "../contact-sec/contact-sec.component";
+import { AdvantagesComponent } from "../advantages/advantages.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, OurServicesComponent, HeroComponent, CardComponent, ProjectsComponent, NewsComponent, FooterComponent, AboutSectionComponent, ValuesComponent, ContactSecComponent],
+  imports: [HeaderComponent, OurServicesComponent, HeroComponent, CardComponent, ProjectsComponent, NewsComponent, FooterComponent, AboutSectionComponent, ValuesComponent, ContactSecComponent, AdvantagesComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

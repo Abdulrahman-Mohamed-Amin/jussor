@@ -1,0 +1,219 @@
+.services-hero {
+  height: 50vh;
+  /* background: linear-gradient(rgba(19, 37, 57, 0.75), rgba(19, 37, 57, 0.75)),
+    url("../../../../../assets/house.webp") center/cover no-repeat; */
+    background: var(--main);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+  color: #fff;
+}
+.services-hero h1 {
+  font-size: 3rem;
+  font-weight: 900;
+}
+.services-hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* body  */
+
+.services-blocks {
+  margin: 70px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.service-block {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--main);
+  padding: 30px 0;
+  position: relative;
+}
+
+.service-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, var(--blue), var(--main));
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  opacity: 0.15;
+}
+
+.sb-left {
+  width: 60%;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 30px;
+  padding-top: 20px;
+}
+
+.sb-left h2 {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--sec);
+  opacity: 0.12;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.sb-left h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--blue);
+  margin-top: -35px;
+  margin-bottom: 10px;
+}
+
+.sb-left p {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #444;
+}
+
+.sb-right img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+@media(max-width:768px){
+    .services-blocks{
+        padding: 0 15px;
+    }
+    .service-block{
+        flex-direction: column-reverse;
+        gap: 50px;
+        align-items: center;
+    }
+    .sb-left{
+        text-align: center;
+        padding:30px 0 0 0;
+        width: 90%;
+    }
+    .sb-left h3{
+        font-size: 20px;
+    }
+    .sb-left p{
+        font-size: 13px;
+    }
+    .sb-right{
+        padding-top: 20px;
+    }
+}
+/* لماذا تختارنا  */
+
+/* SECTION TITLE */
+.section-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--blue);
+  margin-bottom: 40px;
+  text-align: right;
+}
+
+/* WHY US SECTION */
+.why-us {
+  padding: 60px 0;
+}
+
+.why-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.why-card {
+  background: #fff;
+  padding: 25px;
+  border: 1px solid #eee;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  position: relative;
+  transition: 0.3s ease;
+
+}
+
+.why-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  border-color: var(--main);
+}
+
+.why-card .why-icon {
+  width: 50px;
+  height: 50px;
+  margin:0 auto 10px;
+  color: var(--main);      /* نفس لون الأيقونة القديم */
+  display: block;
+}
+
+
+.why-card h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+
+.why-card p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #444;
+}
+@media(max-width:578px){
+  .why-us{
+    padding: 60px 15px;
+  }
+}
+/* قسم CTA  */
+
+.services-cta {
+  padding: 70px 0;
+  background: linear-gradient(135deg, var(--blue), var(--main));
+  text-align: center;
+  color: #fff;
+  margin-top: 60px;
+}
+
+.cta-content h2 {
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.cta-content p {
+  max-width: 600px;
+  margin: 0 auto 25px;
+  font-size: 16px;
+  opacity: 0.9;
+  line-height: 1.8;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 12px 35px;
+  background: #fff;
+  color: var(--blue);
+  font-weight: 700;
+  border-radius: 6px;
+  box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.25);
+  transition: 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: var(--sec2);
+  color: var(--blue);
+}

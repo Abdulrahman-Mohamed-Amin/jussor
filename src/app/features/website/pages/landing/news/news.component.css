@@ -1,12 +1,13 @@
 
 .news-feature {
   background: #fff;
+  border-radius: 0 0 30px 30px;
+  padding: 70px 0;
 }
 .container{
       display: flex;
   align-items: center;
   gap: 40px;
-  padding: 70px 0;
   flex-wrap: wrap;
 }
 

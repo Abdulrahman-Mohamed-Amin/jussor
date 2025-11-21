@@ -74,20 +74,22 @@ ul{
   border-radius: 8px;
 }
 
-/* .title{
-    color: var(--main);
-    position: relative;
-    background: var(--sec2);
-    width: fit-content;
-    padding: 5px 15px;
-    border-radius: 15px;
-    margin: 0 auto 60px;
-    font-weight: bold;
-    font-size: 40px;
-} */
 
 
 .p-80{
     padding: 80px 0;
 }
 /* components */
+
+.icon_box{
+  width: 60px;
+  height: 60px;
+    border-radius: 50%;
+  box-shadow: var(--shadow);
+  text-align: center;
+  line-height: 60px;
+}
+.icon{
+  width: 40px;
+  height: 40px;
+}
