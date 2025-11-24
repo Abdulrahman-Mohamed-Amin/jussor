@@ -1,0 +1,22 @@
+<div
+  class="bg-white w-100 vh-100 d-flex justify-content-center align-items-center"
+>
+  <!-- From Uiverse.io by Yaya12085 -->
+  <form class="form" [formGroup]="loginForm" (ngSubmit)="sendData()">
+    <p class="title">تسجيل الدخول</p>
+
+    <label>
+      <input required="" type="text" class="input" formControlName="username" />
+      <span>اسم المستخدم</span>
+    </label>
+
+    <label>
+      <input required="" placeholder="" type="password" class="input" formControlName="password"/>
+      <span>كلمة السر</span>
+    </label>
+
+    <button class="submit" >دخول</button>
+  </form>
+ 
+</div>
+

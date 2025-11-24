@@ -1,0 +1,64 @@
+.dashboard-layout {
+  display: flex;
+  direction: rtl;
+  height: 100vh;
+  background: #f5f6fa;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  background: var(--blue);
+  color: #fff;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.brand {
+  text-align: center;
+}
+
+.brand img {
+  width: 60px;
+  margin-bottom: 8px;
+}
+
+.brand h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* NAV */
+.side-nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  margin: 12px 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: .3s;
+}
+
+.side-nav a svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+
+.side-nav a.active,
+.side-nav a:hover {
+  background: var(--main);
+}
+
+/* CONTENT AREA */
+.content-area {
+  flex: 1;
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  padding: 30px;
+  overflow-y: auto;
+}
