@@ -1,0 +1,100 @@
+<div class="container">
+  <form class="" [formGroup]="addForm">
+    <h2>اضافة خدمة جديد</h2>
+    <div class="row">
+      <!--===================== form groub==================  -->
+
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="artitle">اسم الخدمة عربي <span>*</span></label>
+          <input
+            type="text"
+            id="artitle"
+            class="form-control"
+            (input)="allowArabicOnly($event)"
+            placeholder="الادخال باللغة العربية فقط"
+            formControlName="arTitle"
+          />
+        </div>
+      </div>
+      <!--===================== form groub==================  -->
+
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="entitle">اسم الخدمة انجليزي <span>*</span></label>
+          <input
+            type="text"
+            id="entitle"
+            class="form-control"
+            (input)="allowEnglishOnly($event)"
+            placeholder="الادخال باللغة الانجليزية فقط"
+            formControlName="enTitle"
+          />
+        </div>
+      </div>
+
+      <!--===================== form groub==================  -->
+
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="ardes">وصف الخدمة عربي <span>*</span></label>
+          <input
+            type="text"
+            id="ardes"
+            class="form-control"
+            (input)="allowArabicOnly($event)"
+            placeholder="الادخال باللغة العربية فقط"
+            formControlName="arDescription"
+          />
+        </div>
+      </div>
+
+      <!--===================== form groub==================  -->
+
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="endes">وصف الخدمة انجليزي <span>*</span></label>
+          <input
+            type="text"
+            id="endes"
+            class="form-control"
+            (input)="allowEnglishOnly($event)"
+            placeholder="الادخال باللغة الانجليزية فقط"
+            formControlName="enDescription"
+          />
+        </div>
+      </div>
+
+            <!--===================== form groub==================  -->
+
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="vedio">اختر فيديو <span>*</span></label>
+          <input
+            type="file"
+            id="vedio"
+            class="form-control"
+            (change)="validateVideo($event)"
+            placeholder="فيديو فقط"
+            formControlName="VideoPath"
+          />
+        </div>
+        @if(errorMessage){
+          <div class="text-danger error">{{errorMessage}}</div>
+        }
+      </div>
+      <!--===================== form groub==================  -->
+
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="status">اختر صور الخدمة <span>*</span></label>
+          <input type="file" accept="image/*" multiple class="form-control" formControlName="ImageFiles">
+        </div>
+        
+      </div>
+      <!--===================== form groub==================  -->
+
+    </div>
+    <button class="dash_btn">ارسال</button>
+  </form>
+</div>

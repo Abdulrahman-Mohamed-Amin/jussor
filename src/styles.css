@@ -1,5 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
 
 
 @font-face {
@@ -93,3 +92,75 @@ ul{
   width: 40px;
   height: 40px;
 }
+
+.dash_btn{
+  background: var(--blue);
+  color: #fff;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  padding: 9px 18px;
+  width: fit-content;
+  margin: 30px auto 0;
+  font-size: 17px;
+  width: 100px;
+}
+.dash_btn:hover{
+  background: var(--main);
+}
+
+
+.dash_table h2{
+    margin-bottom: 30px;
+    color: var(--main);
+}
+
+
+
+
+
+.dash_table .project-table {
+  width: 100%;
+  border-collapse: collapse;
+  direction: rtl;
+  font-family: 'Cairo', sans-serif;
+  margin-top: 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.dash_table .project-table thead {
+  background-color: var(--blue);
+  color: white;
+}
+
+.dash_table .project-table th, .dash_table .project-table td {
+  padding: 14px;
+  /* text-align: left; */
+  border-bottom: 1px solid #ddd;
+}
+
+.dash_table .project-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.dash_table .edit-btn,
+.dash_table .delete-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.dash_table .edit-btn {
+  background-color: var(--main);
+}
+
+.dash_table .delete-btn {
+  background-color: rgba(255, 0, 0, 0.623);
+}
+
+

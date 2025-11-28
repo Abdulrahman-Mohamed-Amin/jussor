@@ -10,25 +10,22 @@
 
     <nav class="side-nav">
 
-      <a routerLink="/dashboard/home" routerLinkActive="active">
-        <svg viewBox="0 0 24 24">
-          <path d="M3 10.5 12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1V10.5Z"/>
-        </svg>
+      <a routerLink="/admin/dashboard/manage_projects" routerLinkActive="active">
         <span>المشاريع</span>
       </a>
 
-      <a routerLink="/dashboard/projects" routerLinkActive="active">
-        <svg viewBox="0 0 24 24">
-          <path d="M3 3h18v4H3V3Zm0 7h18v4H3v-4Zm0 7h18v4H3v-4Z"/>
-        </svg>
+      <a routerLink="/admin/dashboard/services" routerLinkActive="active">
         <span>الخدمات</span>
       </a>
 
-      <a routerLink="/dashboard/users" routerLinkActive="active">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 2a5 5 0 0 1 0 10 5 5 0 0 1 0-10Zm7 18v2H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7Z"/>
-        </svg>
+      <a routerLink="/admin/dashboard/news" routerLinkActive="active">
         <span>الاخبار</span>
+      </a>
+      <a routerLink="/admin/dashboard/projects_status" routerLinkActive="active">
+        <span>حالة المشاريع</span>
+      </a>
+      <a routerLink="/admin/dashboard/projects_type" routerLinkActive="active">
+        <span>أنواع المشاريع</span>
       </a>
 
 
@@ -39,7 +36,7 @@
 
   <!-- ========== MAIN AREA ========== -->
   <main class="content-area">
-   <div class="bg-danger"></div>
+    <router-outlet></router-outlet>
   </main>
 
 </div>

@@ -1,0 +1,111 @@
+<div class="container dash_table">
+  <h2>اضافة حالة مشروع جديدة</h2>
+  <form [formGroup]="typesForm" (ngSubmit)="addType()">
+    <div class="row">
+      <!--===================== form groub==================  -->
+
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="artitle">اسم الحالة عربي <span>*</span></label>
+          <input
+            type="text"
+            id="artitle"
+            class="form-control"
+            (input)="allowArabicOnly($event)"
+            placeholder="الادخال باللغة العربية فقط"
+            formControlName="arName"
+          />
+        </div>
+      </div>
+      <!--===================== form groub==================  -->
+
+      <!--===================== form groub==================  -->
+
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="entitle">اسم الحالة انجليزي <span>*</span></label>
+          <input
+            type="text"
+            id="entitle"
+            class="form-control"
+            (input)="allowEnglishOnly($event)"
+            placeholder="الادخال باللغة الانجليزية فقط"
+            formControlName="enName"
+          />
+        </div>
+      </div>
+
+      <button class="dash_btn">ارسال</button>
+    </div>
+  </form>
+
+  @if(openEditForm){
+  <form [formGroup]="editForm" (ngSubmit)="sendEditRequest()" class="hidden_form" >
+    <i class="fas fa-xmark close" (click)="openEditForm = false"></i>
+    <h2 class="text-center">تعديل الحالة</h2>
+    <div class="row">
+      <!--===================== form groub==================  -->
+
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="artitle">اسم الحالة عربي <span>*</span></label>
+          <input
+          autocomplete="off"
+            type="text"
+            id="artitle"
+            class="form-control"
+            (input)="allowArabicOnly($event)"
+            placeholder="الادخال باللغة العربية فقط"
+            formControlName="arName"
+          />
+        </div>
+      </div>
+      <!--===================== form groub==================  -->
+
+      <!--===================== form groub==================  -->
+
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="entitle">اسم الحالة انجليزي <span>*</span></label>
+          <input
+          autocomplete="off"
+            type="text"
+            id="entitle"
+            class="form-control"
+            (input)="allowEnglishOnly($event)"
+            placeholder="الادخال باللغة الانجليزية فقط"
+            formControlName="enName"
+          />
+        </div>
+      </div>
+
+      <button class="dash_btn">ارسال</button>
+    </div>
+  </form>
+  <div class="lay"></div>
+  }
+  <h2 class="mt-5">الحالات الموجودة</h2>
+  <table class="project-table">
+    <thead>
+      <tr>
+        <th>اسم الحالة</th>
+        <th>الإجراءات</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of types; track $index) {
+      <tr>
+        <td>{{ item.arName }}</td>
+        <td>
+          <button class="edit-btn" (click)="editType(item.id, item)">
+            تعديل
+          </button>
+          <button class="delete-btn" (click)="deleteType($index, item.id)">
+            حذف
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

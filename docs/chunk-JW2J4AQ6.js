@@ -1,1 +1,0 @@
-import{a as e,c as i,z as o}from"./chunk-AIDCPCTB.js";var c=[],r=class t{static \u0275fac=function(s){return new(s||t)};static \u0275mod=i({type:t});static \u0275inj=e({imports:[o.forChild(c),o]})};export{r as a};

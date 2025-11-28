@@ -1,0 +1,42 @@
+
+h2{
+    color: #fff ;
+    background: var(--main);
+    padding: 5px 10px;
+    margin:0 auto 30px;
+    width: fit-content;
+    border-radius: 10px;
+}
+.col-12{
+  margin-bottom: 30px;
+
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+label span{
+    color: var(--main);
+}
+.form-group .form-control {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+.form-group .form-control:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+.error{
+  font-size: 12px;
+}
