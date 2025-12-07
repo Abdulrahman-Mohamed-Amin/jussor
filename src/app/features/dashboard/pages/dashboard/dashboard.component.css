@@ -62,3 +62,17 @@
   padding: 30px;
   overflow-y: auto;
 }
+
+
+button{
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-top: auto;
+  margin-bottom: 30px;
+  padding: 10px;
+  font-weight: bold;
+}
+button:hover{
+  background: var(--main);
+}

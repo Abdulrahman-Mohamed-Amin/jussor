@@ -1,24 +1,37 @@
-
-
 <section class="news-feature ">
   <h2 class="title">الأخبار</h2>
-    <div class="container">
+  <div class="swiper mySwiper2">
+    <div class="swiper-wrapper">
+
+
+
+      @for(new of news ; track $index){
+      <div class="swiper-slide">
+        <div class="container">
           <div class="news-img">
-  <img src="assets/house.webp">
-   
-  </div>
+            <img [src]="url + new.imagePaths[0]">
 
-  <div class="news-content">
-    <span class="news-label">خبر جديد</span>
+          </div>
 
-    <h2 class="news-title">افتتاح المرحلة الجديدة لمشروع الواجهة البحرية</h2>
+          <div class="news-content">
 
-    <p class="news-text">
-      أعلنت الشركة عن إطلاق المرحلة الثانية من مشروع الواجهة البحرية، والتي تشمل وحدات سكنية عصرية،
-      ومساحات خضراء، ومرافق متكاملة، ضمن خطة التطوير المستمر للمنطقة الشمالية من جدة.
-    </p>
+            <h2 class="news-title">{{lang == "ar" ? new.arTitle : new.enTitle}}</h2>
 
-  </div>
+            <p class="news-text">
+              {{lang == "ar" ? new.arDescription : new.enDescription}}
+            </p>
+
+          </div>
+        </div>
+      </div>
+
+      }
+
     </div>
-</section>
 
+    <div class="swiper-pagination"></div>
+
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>

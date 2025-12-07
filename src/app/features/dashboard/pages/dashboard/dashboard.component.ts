@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth/auth.service';
 import { DashboardRoutingModule } from "../../dashboard-routing.module";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,9 @@ import { DashboardRoutingModule } from "../../dashboard-routing.module";
 })
 export class DashboardComponent {
 
-  constructor(){}
+  constructor(private _auth:AuthService){}
 
-  
+  logout(){
+    this._auth.logout()
+  }
 }

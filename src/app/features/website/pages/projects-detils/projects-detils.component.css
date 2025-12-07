@@ -36,8 +36,7 @@
 /* HERO IMAGE */
 .project-hero-img img {
   width: 100%;
-  height: 420px;
-  object-fit: cover;
+  height: 600px;
   border-radius: 16px;
 }
 
@@ -76,8 +75,7 @@
 
 .gallery-img img {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
+  height: 300px;
   transition: .4s;
 }
 
@@ -100,4 +98,13 @@
 
 .section-title{
     color: var(--main);
+}
+
+@media(max-width:578px){
+  .gallery-img img{
+    height: 220px;
+  }
+  .project-hero-img img{
+    height: 350px;
+  }
 }

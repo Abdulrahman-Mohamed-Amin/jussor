@@ -1,12 +1,12 @@
 <div class="container dash_table">
-  <h2>اضافة حالة مشروع جديدة</h2>
+  <h2>اضافة نوع مشروع</h2>
   <form [formGroup]="typesForm" (ngSubmit)="addType()">
     <div class="row">
       <!--===================== form groub==================  -->
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="artitle">اسم الحالة عربي <span>*</span></label>
+          <label for="artitle">نوع المشروع عربي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
             type="text"
             id="artitle"
@@ -23,7 +23,7 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="entitle">اسم الحالة انجليزي <span>*</span></label>
+          <label for="entitle">نوع المشروع انجليزي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
             type="text"
             id="entitle"
@@ -42,13 +42,13 @@
   @if(openEditForm){
   <form [formGroup]="editForm" (ngSubmit)="sendEditRequest()" class="hidden_form" >
     <i class="fas fa-xmark close" (click)="openEditForm = false"></i>
-    <h2 class="text-center">تعديل الحالة</h2>
+    <h2 class="text-center">تعديل النوع</h2>
     <div class="row">
       <!--===================== form groub==================  -->
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="artitle">اسم الحالة عربي <span>*</span></label>
+          <label for="artitle">نوع المشروع عربي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
           autocomplete="off"
             type="text"
@@ -66,7 +66,7 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="entitle">اسم الحالة انجليزي <span>*</span></label>
+          <label for="entitle">kنوع المشروع انجليزي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
           autocomplete="off"
             type="text"
@@ -100,7 +100,7 @@
           <button class="edit-btn" (click)="editType(item.id, item)">
             تعديل
           </button>
-          <button class="delete-btn" (click)="deleteType($index, item.id)">
+          <button class="delete" (click)="deleteType($index, item.id)">
             حذف
           </button>
         </td>

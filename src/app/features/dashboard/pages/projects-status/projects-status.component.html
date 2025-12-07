@@ -6,7 +6,7 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="artitle">اسم الحالة عربي <span>*</span></label>
+          <label for="artitle">اسم الحالة عربي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
             type="text"
             id="artitle"
@@ -23,7 +23,7 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="entitle">اسم الحالة انجليزي <span>*</span></label>
+          <label for="entitle">اسم الحالة انجليزي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
             type="text"
             id="entitle"
@@ -48,7 +48,7 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="artitle">اسم الحالة عربي <span>*</span></label>
+          <label for="artitle">اسم الحالة عربي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
           autocomplete="off"
             type="text"
@@ -66,7 +66,7 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="entitle">اسم الحالة انجليزي <span>*</span></label>
+          <label for="entitle">اسم الحالة انجليزي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
           autocomplete="off"
             type="text"
@@ -84,6 +84,9 @@
   </form>
   <div class="lay"></div>
   }
+
+
+  
   <h2 class="mt-5">الحالات الموجودة</h2>
   <table class="project-table">
     <thead>
@@ -100,7 +103,7 @@
           <button class="edit-btn" (click)="editProject(item.id, item)">
             تعديل
           </button>
-          <button class="delete-btn" (click)="deleteProject($index, item.id)">
+          <button class="delete" (click)="deleteProject($index, item.id)">
             حذف
           </button>
         </td>

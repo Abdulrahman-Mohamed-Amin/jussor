@@ -1,26 +1,23 @@
-
-
-
 <div class="bg-white cont" id="services">
   <section class="services-section container">
 
-  <h2 class="title">خدماتنا</h2>
+    <h2 class="title">خدماتنا</h2>
 
-  <div class="services-wrapper">
+    <div class="services-wrapper">
 
-    <!-- التطوير العقاري -->
-    <div class="service-card">
-      <div class="card-header">
-        <h3 class="card-title ">التطوير العقاري</h3>
-        <div class="icon-circle">
-          <i class="fa-solid fa-building"></i>
+      @for(service of services ; track $index; let i = $index){
+      <div class="service-card">
+        <div class="card-header">
+          <h3 class="card-title ">{{lang == 'ar' ? service.arTitle :  service.enTitle}}</h3>
+          <div class="icon-circle">
+            <i [class]="icons[i]"></i>
+          </div>
         </div>
+        <p class="gradient-text">{{lang == 'ar' ? service.arDescription :  service.enDescription}}</p>
       </div>
-      <p class="gradient-text"> تصميم وتطوير مشاريع سكنية وتجارية متكاملة تمتاز بالتخطيط العصري والجودة العالية، لتلبية احتياجات السوق وتحقيق قيمة مضافة للمجتمعات</p>
-    </div>
+      }
 
-    <!-- التشييد -->
-    <div class="service-card">
+      <!-- <div class="service-card">
       <div class="card-header">
         <h3 class="card-title">التشييد</h3>
         <div class="icon-circle">
@@ -30,7 +27,6 @@
       <p class="gradient-text">تنفيذ مشاريع عمرانية متطورة وفق أعلى المعايير الهندسية مع الالتزام بالجداول الزمنية والجودة التنفيذية.</p>
     </div>
 
-    <!-- إدارة المراكز التجارية -->
     <div class="service-card">
       <div class="card-header">
         <h3 class="card-title ">إدارة المراكز التجارية</h3>
@@ -41,7 +37,6 @@
       <p class="gradient-text">تقديم إدارة شاملة للمراكز التجارية تشمل التشغيل والصيانة والتسويق لضمان استدامة النجاح وتعزيز تجربة الزوار الشرائية.</p>
     </div>
     
-    <!-- إدارة الفنادق -->
     <div class="service-card">
       <div class="card-header">
         <h3 class="card-title">إدارة الفنادق</h3>
@@ -52,7 +47,6 @@
       <p class="gradient-text">تطوير وإدارة الفنادق والشقق الفندقية بما يضمن تقديم خدمات راقية تلبي احتياجات الضيوف.</p>
     </div>
     
-    <!-- المنتجات التقنية -->
     <div class="service-card">
       <div class="card-header">
         <h3 class="card-title">المنتجات التقنية</h3>
@@ -61,10 +55,8 @@
         </div>
       </div>
       <p class="gradient-text">ابتكار وإدارة الحلول والتقنيات الحديثة وتطبيقات التحول الرقمي لدعم مختلف أعمال الشركات وتعزيز الكفاءة التشغيلية.</p>
+    </div> -->
+
     </div>
-
-  </div>
-</section>
+  </section>
 </div>
-
-

@@ -1,8 +1,7 @@
-
-.cont{
-  border-radius: 30px 30px 0 0;
-box-shadow: var(--shadow);
+.cont {
+  box-shadow: var(--shadow);
 }
+
 .services-section {
   padding: 80px 0;
 }
@@ -29,7 +28,7 @@ box-shadow: var(--shadow);
   background: #fff;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0,0,0,.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .08);
   padding-bottom: 25px;
   transition: .3s ease;
 }
@@ -77,21 +76,23 @@ box-shadow: var(--shadow);
 .gradient-text {
   margin-top: 60px;
   font-size: 15px;
-color: var(--main);
-padding: 0 20px;
+  color: var(--main);
+  padding: 0 20px;
 }
 
 /* ======= RESPONSIVE ======= */
-@media(max-width: 768px){
-  .service-card{
+@media(max-width: 768px) {
+  .service-card {
     width: 45%;
   }
 }
-@media(max-width: 578px){
-  .service-card{
+
+@media(max-width: 578px) {
+  .service-card {
     width: 100%;
   }
-  .services-section{
-      padding: 80px 10px;
+
+  .services-section {
+    padding: 80px 10px;
   }
 }

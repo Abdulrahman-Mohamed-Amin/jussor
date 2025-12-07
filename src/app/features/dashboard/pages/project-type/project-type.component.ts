@@ -12,12 +12,12 @@ import { ProjectTypeService } from '../../../../core/services/projects/project-t
 })
 export class ProjectTypeComponent {
   types: any[] = [];
-  openEditForm:boolean = false
+  openEditForm: boolean = false
   typesForm: FormGroup = new FormGroup({
     enName: new FormControl('', Validators.required),
     arName: new FormControl('', Validators.required),
   });
-  
+
   editForm: FormGroup = new FormGroup({
     id: new FormControl(''),
     enName: new FormControl('', Validators.required),
@@ -27,7 +27,7 @@ export class ProjectTypeComponent {
   constructor(
     private _typeService: ProjectTypeService,
     private toast: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.gettypes();
@@ -42,11 +42,15 @@ export class ProjectTypeComponent {
           this.toast.success('تمت الاضافة بنجاح');
           this.typesForm.reset();
         },
-        error: () => {
-          this.toast.error('حدث خطأ ما');
+        error: (err) => {
+          if (err.status == 401) {
+            this.toast.error('انتهت الجلسة سجل الدخول مرة أخري');
+          } else {
+            this.toast.error('حدث خطأ ما');
+          }
         },
-        complete:() =>{
-          
+        complete: () => {
+          location.reload()
         }
       });
     } else {
@@ -64,35 +68,39 @@ export class ProjectTypeComponent {
 
   // ========= edit ================
 
-  editType(id: number , item:any) {
+  editType(id: number, item: any) {
     this.openEditForm = true
 
     this.editForm.patchValue({
-      id:item.id ,
-      enName:item.enName,
-      arName:item.arName,
+      id: item.id,
+      enName: item.enName,
+      arName: item.arName,
     })
-    
+
   }
 
-  sendEditRequest(){
-    
-    if(this.editForm.valid){
-          this._typeService.edittype(this.editForm.value).subscribe({
-      next:(res) => {
+  sendEditRequest() {
 
-        this.toast.success("تم تعديل الحالة")
-      },
-      error:() =>{
-        this.toast.error("حدث خطأ ما")
-      },
-      complete:() =>{
-        setTimeout(() => {
-                  window.location.reload()
-        }, 1000);
-      }
-    })
-    }else{
+    if (this.editForm.valid) {
+      this._typeService.edittype(this.editForm.value).subscribe({
+        next: (res) => {
+
+          this.toast.success("تم تعديل الحالة")
+        },
+        error: (err) => {
+          if (err.status == 401) {
+            this.toast.error('انتهت الجلسة سجل الدخول مرة أخري');
+          } else {
+            this.toast.error('حدث خطأ ما');
+          }
+        },
+        complete: () => {
+          setTimeout(() => {
+            window.location.reload()
+          }, 1000);
+        }
+      })
+    } else {
       this.toast.error('بعض الحقول فارغة')
     }
 
@@ -105,7 +113,11 @@ export class ProjectTypeComponent {
         this.toast.success("تم حذف الحالة بنجاح")
       },
       error: (err) => {
-        this.toast.error("حدث خطأ ما")
+        if (err.status == 401) {
+          this.toast.error('انتهت الجلسة سجل الدخول مرة أخري');
+        } else {
+          this.toast.error('حدث خطأ ما');
+        }
       },
     });
   }

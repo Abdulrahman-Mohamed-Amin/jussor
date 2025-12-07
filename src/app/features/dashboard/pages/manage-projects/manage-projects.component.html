@@ -1,175 +1,191 @@
-<div class="container">
-  <form class="" [formGroup]="addForm" (ngSubmit)="addProject()">
-    <h2>اضافة مشروع جديد</h2>
-    <div class="row">
-      <!--===================== form groub==================  -->
+@if (isEditMode) {
+<div class="lay"></div>
+}
+<div class="container ">
 
+
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()" [ngClass]="{'edit_form': isEditMode}">
+    <h2>{{ isEditMode ? 'تعديل' : 'إضافة' }} مشروع </h2>
+
+    @if (isEditMode) {
+    <i class="fas fa-xmark close" (click)="closeForm()"></i>
+    }
+    <div class="row">
+
+      <!--===================== form group ==================-->
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="artitle">اسم المشروع عربي <span>*</span></label>
-          <input
-            type="text"
-            id="artitle"
-            class="form-control"
-            (input)="allowArabicOnly($event)"
-            placeholder="الادخال باللغة العربية فقط"
-            formControlName="arTitle"
-          />
+          <input type="text" id="artitle" class="form-control" (input)="allowArabicOnly($event)"
+            placeholder="الادخال باللغة العربية فقط" formControlName="arTitle" />
         </div>
       </div>
-      <!--===================== form groub==================  -->
 
+      <!--===================== form group ==================-->
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="entitle">اسم المشروع انجليزي <span>*</span></label>
-          <input
-            type="text"
-            id="entitle"
-            class="form-control"
-            (input)="allowEnglishOnly($event)"
-            placeholder="الادخال باللغة الانجليزية فقط"
-            formControlName="enTitle"
-          />
+          <input type="text" id="entitle" class="form-control" (input)="allowEnglishOnly($event)"
+            placeholder="الادخال باللغة الانجليزية فقط" formControlName="enTitle" />
         </div>
       </div>
 
-      <!--===================== form groub==================  -->
-
+      <!--===================== form group ==================-->
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="ardes">وصف المشروع عربي <span>*</span></label>
-          <input
-            type="text"
-            id="ardes"
-            class="form-control"
-            (input)="allowArabicOnly($event)"
-            placeholder="الادخال باللغة العربية فقط"
-            formControlName="arDescription"
-          />
+          <input type="text" id="ardes" class="form-control" (input)="allowArabicOnly($event)"
+            placeholder="الادخال باللغة العربية فقط" formControlName="arDescription" />
         </div>
       </div>
 
-      <!--===================== form groub==================  -->
-
+      <!--===================== form group ==================-->
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="endes">وصف المشروع انجليزي <span>*</span></label>
-          <input
-            type="text"
-            id="endes"
-            class="form-control"
-            (input)="allowEnglishOnly($event)"
-            placeholder="الادخال باللغة الانجليزية فقط"
-            formControlName="enDescription"
-          />
+          <input type="text" id="endes" class="form-control" (input)="allowEnglishOnly($event)"
+            placeholder="الادخال باللغة الانجليزية فقط" formControlName="enDescription" />
         </div>
       </div>
 
-      <!--===================== form groub==================  -->
-
+      <!--===================== form group ==================-->
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="adress">عنوان المشروع عربي <span>*</span></label>
-          <input
-            type="text"
-            id="adress"
-            class="form-control"
-            (input)="allowArabicOnly($event)"
-            placeholder="الادخال باللغة العربية فقط"
-            formControlName="locationName"
-          />
+          <input type="text" id="adress" class="form-control" (input)="allowArabicOnly($event)"
+            placeholder="الادخال باللغة العربية فقط" formControlName="arlocationName" />
         </div>
       </div>
-
-      <!--===================== form groub==================  -->
-
+      <!--===================== form group ==================-->
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="location">موقع المشروع <span>*</span></label>
-          <input
-            type="text"
-            id="location"
-            class="form-control"
-            placeholder="ادخل رابط الموقع"
-            formControlName="locationUrl"
-          />
+          <label for="adress">عنوان المشروع انجليزي <span>*</span></label>
+          <input type="text" id="adress" class="form-control" (input)="allowEnglishOnly($event)"
+            placeholder="الادخال باللغة العربية فقط" formControlName="enlocationName" />
         </div>
       </div>
 
-      <!--===================== form groub==================  -->
 
-      <div class="col-md-6 col-12">
-        <div class="form-group">
-          <label for="vedio">اختر فيديو <span>*</span></label>
-          <input
-            type="file"
-            id="vedio"
-            class="form-control"
-            (change)="validateVideo($event)"
-            placeholder="فيديو فقط"
-            formControlName="videoPath"
-          />
-        </div>
-        @if(errorMessage){
-        <div class="text-danger error">{{ errorMessage }}</div>
-        }
-      </div>
-      <!--===================== form groub==================  -->
-
-      <div class="col-md-6 col-12">
-        <div class="form-group">
-          <label for="status">اختر صور المشروع <span>*</span></label>
-          <input
-            type="file"
-            accept="image/*"
-            multiple
-            class="form-control"
-            formControlName="projectImages"
-          />
-        </div>
-      </div>
-      <!--===================== form groub==================  -->
-
+      <!--===================== STATUS ==================-->
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="status">اختر حالة المشروع <span>*</span></label>
-          <select
-            formControlName="projectStatusId"
-            class="form-select"
-            id="status"
-          >
+          <select formControlName="projectStatusId" class="form-select" id="status">
             @for(stat of status; track stat.id){
-            <option [value]="+stat.id">{{ stat.arName }}</option>
+            <option [value]="stat.id">{{ stat?.arName }}</option>
             }
           </select>
         </div>
       </div>
-      <!--===================== form groub==================  -->
 
+      <!--===================== TYPES ==================-->
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="types">اختر نوع المشروع <span>*</span></label>
-          <select
-            formControlName="projectTypeId"
-            class="form-select"
-            id="types"
-          >
+          <select formControlName="projectTypeId" class="form-select" id="types">
             @for(type of types; track type.id){
-            <option [value]="+type.id">{{ type.arName }}</option>
+            <option [value]="type?.id">{{ type.arName }}</option>
             }
           </select>
         </div>
       </div>
+
+      <!--===================== form group ==================-->
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="location">رابط موقع المشروع <span>*</span></label>
+          <input type="text" id="location" class="form-control" placeholder="ادخل رابط الموقع"
+            formControlName="locationUrl" />
+        </div>
+      </div>
+
+
+      <!--===================== صورة الواجهة ==================-->
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="status">اختر صورة الواجهة <span>*</span></label>
+          <input type="file" accept="image/*" class="form-control" formControlName="interfaceImageFile"
+            (change)="onInterfaceImageSelected($event)">
+        </div>
+      </div>
+      <!--===================== الصور ==================-->
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="status">اختر صور المشروع <span>*</span></label>
+          <input type="file" accept="image/*" multiple class="form-control" formControlName="projectImages" id="images"
+            (change)="onImagesSelected($event)">
+        </div>
+      </div>
+      <!--===================== الملف التعريفي ==================-->
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="status">اختر الملف التعريفي للمشروع<span class="requierd">(اختياري)</span> <span>*</span></label>
+          <input type="file" accept="file/*" multiple class="form-control" formControlName="proposalFile"
+            (change)="onProposalFileSelected($event)">
+        </div>
+      </div>
+
+      <!--===================== VIDEO ==================-->
+      <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="vedio">اختر فيديو<span class="requierd">(اختياري)</span> <span>*</span></label>
+          <input type="file" id="vedio" class="form-control" (change)="onVideoSelected($event)" placeholder="فيديو فقط"
+            formControlName="videoPath" />
+        </div>
+
+        @if(errorMessage !== ''){
+        <div class="text-danger error">{{ errorMessage }}</div>
+        }
+      </div>
+
     </div>
-    <button class="dash_btn">ارسال</button>
+    @if(selectedProject && isEditMode){
+      <div class="row gy-4">
+      <h4 class="img_delete_title">حذف الصور</h4>
+      @for(img of selectedProject.projectImages; track img.id){
+      <div class="col-2">
+        <div class="img_cont">
+          <i class="fas fa-trash delete"></i>
+          <img [src]="'https://realstatesaudi.runasp.net' + img.imagePath" alt="">
+        </div>
+      </div>
+      }
+    </div>
+    }
+    <button class="dash_btn">{{ isEditMode ? 'تعديل' : 'إضافة' }}</button>
   </form>
 
-  <!-- @for(project of projects ; track project.id){ 
-    <div class="bg-danger">{{project.arTitle}}</div>
-    <video src="{{project.videoPath}}"></video>
-    @for(img of project.projectImages ; track img.id){ 
+  @if (isEditMode) {
+  <div class="lay"></div>
+  }
+</div>
 
-      <img src="{{img.imagePath}}" alt="">
-  } 
-} -->
+
+
+<!--===================== TABLE ==================-->
+<div class="container dash_table">
+  <h2 class="mt-5">المشاريع الموجودة</h2>
+
+  <table class="project-table">
+    <thead>
+      <tr>
+        <th>اسم المشروع</th>
+        <th>حالة المشروع</th>
+        <th>الإجراءات</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for(project of projects; track $index){
+      <tr>
+        <td>{{ project.arTitle }}</td>
+        <td>{{ project.projectStatus?.arName }}</td>
+        <td>
+          <button class="edit-btn" (click)="editProject(project.id, project) ; close = true">تعديل</button>
+          <button class="delete" (click)="deleteProject($index, project.id)">حذف</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
 </div>

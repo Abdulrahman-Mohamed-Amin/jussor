@@ -1,12 +1,15 @@
-<div class="container">
-  <form class="" [formGroup]="addForm">
-    <h2>اضافة خدمة جديد</h2>
+<div class="container first-form">
+  <form class="" [formGroup]="addForm" (ngSubmit)="onSubmit()" [ngClass]="{'edit_form': isEditMode}">
+    @if (isEditMode) {
+      <i class="fas fa-xmark close" (click)="closeForm()"></i>
+    }
+    <h2>{{ isEditMode ? 'تعديل' : 'إضافة' }} خدمة </h2>
     <div class="row">
       <!--===================== form groub==================  -->
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="artitle">اسم الخدمة عربي <span>*</span></label>
+          <label for="artitle">اسم الخدمة عربي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
             type="text"
             id="artitle"
@@ -21,7 +24,7 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="entitle">اسم الخدمة انجليزي <span>*</span></label>
+          <label for="entitle">اسم الخدمة انجليزي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
             type="text"
             id="entitle"
@@ -37,7 +40,7 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="ardes">وصف الخدمة عربي <span>*</span></label>
+          <label for="ardes">وصف الخدمة عربي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
             type="text"
             id="ardes"
@@ -53,7 +56,7 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="endes">وصف الخدمة انجليزي <span>*</span></label>
+          <label for="endes">وصف الخدمة انجليزي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
             type="text"
             id="endes"
@@ -65,36 +68,52 @@
         </div>
       </div>
 
-            <!--===================== form groub==================  -->
 
-      <div class="col-md-6 col-12">
-        <div class="form-group">
-          <label for="vedio">اختر فيديو <span>*</span></label>
-          <input
-            type="file"
-            id="vedio"
-            class="form-control"
-            (change)="validateVideo($event)"
-            placeholder="فيديو فقط"
-            formControlName="VideoPath"
-          />
-        </div>
-        @if(errorMessage){
-          <div class="text-danger error">{{errorMessage}}</div>
-        }
-      </div>
       <!--===================== form groub==================  -->
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="status">اختر صور الخدمة <span>*</span></label>
-          <input type="file" accept="image/*" multiple class="form-control" formControlName="ImageFiles">
+          <label for="status">اختر صورة الخدمة<span class="requierd">(مطلوب)</span> <span>*</span></label>
+          <input type="file" accept="image/*" class="form-control" formControlName="ImageFiles" id="images" (change)="onImagesSelected($event)">
         </div>
         
       </div>
       <!--===================== form groub==================  -->
 
     </div>
-    <button class="dash_btn">ارسال</button>
+    <button class="dash_btn">{{ isEditMode ? 'تعديل' : 'إضافة' }}</button>
   </form>
+
+
+  @if(isEditMode){
+    <div class="lay"></div>
+  }
+</div>
+
+
+<!-- ========================== table ==================== -->
+
+<div class="dash_table container">
+    <h2 class="mt-5">الخدمات الموجودة</h2>
+
+  <table class="project-table">
+    <thead>
+      <tr>
+        <th>اسم الخدمة</th>
+        <th>الإجراءات</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for(project of services; track $index){
+      <tr>
+        <td>{{ project.arTitle }}</td>
+        <td>
+          <button class="edit-btn" (click)="editService(project)">تعديل</button>
+          <button class="delete" (click)="deleteService($index, project.id)">حذف</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
 </div>

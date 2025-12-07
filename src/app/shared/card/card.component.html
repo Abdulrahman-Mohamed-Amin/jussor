@@ -1,19 +1,34 @@
-<div class="project-card">
-  
+
+  <div class="project-card">
+
   <div class="project-img">
-    <img src="assets/pexels-zachtheshoota-1838640.jpg" alt="project">
-    <span class="project-tag">جاهز للتسليم</span>
+    <img 
+      [src]="url + project?.interfaceImagePath" 
+      alt="project"
+    >
+    <span class="project-tag">{{lang == 'ar' ? project?.projectStatus?.arName : project?.projectStatus?.enName}}</span>
   </div>
 
   <div class="project-content">
-    <h3 class="project-title">مشروع واجهة البحر</h3>
+    <h3 class="project-title">
+   {{lang == 'ar' ? project?.arTitle : project?.enTitle}}
+    </h3>
 
     <div class="project-info">
-      <p><i class="fa-solid fa-ruler-combined"></i>تطوير عقاري </p>
-      <p><i class="fa-solid fa-location-dot"></i> شمال جدة</p>
+      <p>
+        <i class="fa-solid fa-ruler-combined"></i>
+        {{lang == 'ar' ? project?.projectType?.arName : project?.projectType?.enName}}
+      </p>
+
+      <p>
+        <i class="fa-solid fa-location-dot"></i>
+       {{lang == "ar" ? project?.arLocationName : project?.enLocationName}}
+      </p>
     </div>
 
-    <button class="project-btn" routerLink="/project-detils">عرض التفاصيل</button>
+    <button class="project-btn" [routerLink]="['/project-detils', project?.id]">
+      عرض التفاصيل
+    </button>
   </div>
 
 </div>

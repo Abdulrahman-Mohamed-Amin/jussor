@@ -8,9 +8,6 @@
   margin-bottom: 8px;
   color: #333;
 }
-label span{
-    color: var(--main);
-}
 .form-group .form-control {
   padding: 10px 12px;
   border: 1px solid #ccc;

@@ -23,10 +23,6 @@ export class LoginComponent {
     password: new FormControl('', Validators.required),
   });
   constructor(private _authService: AuthService ,private _toaster :ToastrService ,private router:Router) {
-    _authService.getProjects().subscribe(res =>{
-      console.log(res);
-      
-    })
   }
 
   sendData() {

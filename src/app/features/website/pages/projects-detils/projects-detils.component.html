@@ -4,48 +4,47 @@
     <!-- TITLE + META -->
     <div class="row align-items-center mb-4">
       <div class="col-md-8">
-        <h1 class="project-title">مشروع البحر 101</h1>
+        <h1 class="project-title">{{lang == "ar" ? project?.arTitle : project?.enTitle}}</h1>
         <p class="project-location">
           <svg class="icon16" viewBox="0 0 24 24">
-            <path
-              d="M12 2c4.4 0 8 3.6 8 8 0 5.3-8 12-8 12S4 15.3 4 10c0-4.4 3.6-8 8-8zm0 11a3 3 0 100-6 3 3 0 000 6z"
-              fill="currentColor"
-            />
+            <path d="M12 2c4.4 0 8 3.6 8 8 0 5.3-8 12-8 12S4 15.3 4 10c0-4.4 3.6-8 8-8zm0 11a3 3 0 100-6 3 3 0 000 6z"
+              fill="currentColor" />
           </svg>
-          جدة – حي النخيل
+          {{lang == "ar" ? project?.arLocationName : project?.enLocationName}}
         </p>
       </div>
 
       <div class="col-md-4 text-md-end mt-3 mt-md-0">
-        <a class="project-btn" href="#"> الملف التعريفي</a>
+        @if(project?.proposalFilePath){
+        <a class="project-btn" [href]="url + project?.proposalFilePath"> الملف التعريفي</a>
+        }
       </div>
     </div>
 
     <!-- HERO IMAGE -->
     <div class="project-hero-img mb-5">
-      <img src="assets/architecture-5999913_1280.jpg" alt="" />
+      <img [src]="url + project?.interfaceImagePath" alt="" />
     </div>
-        <!-- DESCRIPTION -->
+    <!-- DESCRIPTION -->
     <h2 class="section-title">عن المشروع</h2>
     <p class="project-desc">
-      يتميز مشروع هيلز 101 بتصميم معماري حديث يوفر بيئة سكنية راقية، إضافة إلى
-      مرافق وخدمات شاملة تلبي احتياجات السكان بأسلوب عملي ومتميز.
+      {{lang == "ar" ? project?.arDescription : project?.enDescription}}
     </p>
     <!-- QUICK INFO -->
     <div class="quick-info row g-4 mb-5">
       <div class="col-md-3 col-6">
         <div class="qi-box">
           <h4>حالة المشروع</h4>
-          <p class="status ready">جاهز</p>
+          <p class="status ready">{{lang == "ar" ? project?.projectStatus?.arName : project?.projectStatus?.enName}}</p>
         </div>
       </div>
 
-      
+
 
       <div class="col-md-3 col-6">
         <div class="qi-box">
           <h4>نوع المشروع</h4>
-          <p>مقاولات</p>
+          <p>{{lang == "ar" ? project?.projectType?.arName : project?.projectType?.enName}}</p>
         </div>
       </div>
 
@@ -54,27 +53,11 @@
     <!-- GALLERY -->
     <h2 class="section-title mb-3">صور المشروع</h2>
     <div class="gallery row g-3 mb-5">
+      @for(img of project?.projectImages ; track img.id ){
       <div class="col-md-4 col-6">
-        <div class="gallery-img"><img src="assets/pexels-thelazyartist-1642125.jpg" alt="" /></div>
+        <div class="gallery-img"><img [src]="url + img.imagePath" alt="project picture" /></div>
       </div>
-
-      <div class="col-md-4 col-6">
-        <div class="gallery-img"><img src="assets/pexels-zachtheshoota-1838640.jpg" alt="" /></div>
-      </div>
-      <div class="col-md-4 col-6">
-        <div class="gallery-img"><img src="assets/pexels-zachtheshoota-1838640.jpg" alt="" /></div>
-      </div>
-      <div class="col-md-4 col-6">
-        <div class="gallery-img"><img src="assets/pexels-zachtheshoota-1838640.jpg" alt="" /></div>
-      </div>
-      <div class="col-md-4 col-6">
-        <div class="gallery-img"><img src="assets/pexels-zachtheshoota-1838640.jpg" alt="" /></div>
-      </div>
-      <div class="col-md-4 col-6">
-        <div class="gallery-img"><img src="assets/pexels-zachtheshoota-1838640.jpg" alt="" /></div>
-      </div>
-
-
+      }
     </div>
 
 

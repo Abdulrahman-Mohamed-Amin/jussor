@@ -1,19 +1,15 @@
 <section class="position-relative">
   <div class="inner p-80">
-      <h2 class="title">مشاريعنا</h2>
-  <div class="container">
-    <div class="row gy-4">
-      <div class="col-lg-4 col-md-6 col-12">
-        <app-card></app-card>
-      </div>
-      <div class="col-lg-4 col-md-6 col-12">
-        <app-card></app-card>
-      </div>
-      <div class="col-lg-4 col-md-6 col-12">
-        <app-card></app-card>
+    <h2 class="title">مشاريعنا</h2>
+    <div class="container">
+      <div class="row gy-4">
+        @for(project of projects ; track $index){
+        <div class="col-lg-4 col-md-6 col-12">
+          <app-card [project]="project"></app-card>
+        </div>
+        }
       </div>
     </div>
-  </div>
   </div>
 
 </section>

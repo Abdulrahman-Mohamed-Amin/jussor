@@ -1,12 +1,15 @@
-<div class="container">
-  <form class="" [formGroup]="addForm">
-    <h2>اضافة خبر جديد</h2>
+<div class="container first-form">
+  <form class="" [formGroup]="addForm" (ngSubmit)="onSubmit()" [ngClass]="{'edit_form': isEditMode}">
+    @if (isEditMode) {
+      <i class="fas fa-xmark close" (click)="closeForm()"></i>
+    }
+    <h2>{{ isEditMode ? 'تعديل' : 'إضافة' }} خبر </h2>
     <div class="row">
       <!--===================== form groub==================  -->
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="artitle">اسم الخبر عربي <span>*</span></label>
+          <label for="artitle">اسم الخبر عربي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
             type="text"
             id="artitle"
@@ -21,7 +24,7 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="entitle">اسم الخبر انجليزي <span>*</span></label>
+          <label for="entitle">اسم الخبر انجليزي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
             type="text"
             id="entitle"
@@ -37,7 +40,7 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="ardes">وصف الخبر عربي <span>*</span></label>
+          <label for="ardes">وصف الخبر عربي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
             type="text"
             id="ardes"
@@ -53,7 +56,7 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="endes">وصف الخبر انجليزي <span>*</span></label>
+          <label for="endes">وصف الخبر انجليزي<span class="requierd">(مطلوب)</span> <span>*</span></label>
           <input
             type="text"
             id="endes"
@@ -74,9 +77,9 @@
             type="file"
             id="vedio"
             class="form-control"
-            (change)="validateVideo($event)"
+            (change)="onVideoSelected($event)"
             placeholder="فيديو فقط"
-            formControlName="VideoPath"
+            formControlName="videoPath"
           />
         </div>
         @if(errorMessage){
@@ -87,14 +90,61 @@
 
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="status">اختر صور المشروع <span>*</span></label>
-          <input type="file" accept="image/*" multiple class="form-control" formControlName="ImageFiles">
+          <label for="status">اختر صورة للخبر<span class="requierd">(مطلوب)</span> <span>*</span></label>
+          <input type="file" accept="image/*"  class="form-control" formControlName="imagePaths" id="images" (change)="onImagesSelected($event)">
         </div>
         
       </div>
       <!--===================== form groub==================  -->
 
+          @if(selectedNews && isEditMode){
+      <div class="row gy-4">
+      <h4 class="img_delete_title" >صور الخبر</h4>
+     
+      <div class="col-4">
+        <div class="img_cont" [ngClass]="{'active' : selectedImgeToDelete}">
+          <i class="fas fa-trash delete" ></i>
+          <img [src]="'https://realstatesaudi.runasp.net' + selectedNews.imagePaths[0]" alt="" (click)="show(selectedNews.imagePaths[0])">
+        </div>
+      </div>
+      
     </div>
-    <button class="dash_btn">ارسال</button>
+    }
+
+    </div>
+    <button class="dash_btn">{{ isEditMode ? 'تعديل' : 'إضافة' }}</button>
   </form>
+
+
+  @if(isEditMode){
+    <div class="lay"></div>
+  }
+</div>
+
+
+<!-- ========================== table ==================== -->
+
+<div class="dash_table container">
+    <h2 class="mt-5">الخدمات الموجودة</h2>
+
+  <table class="project-table">
+    <thead>
+      <tr>
+        <th>اسم الخدمة</th>
+        <th>الإجراءات</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @for(project of news; track $index){
+      <tr>
+        <td>{{ project.arTitle }}</td>
+        <td>
+          <button class="edit-btn" (click)="editNew(project)">تعديل</button>
+          <button class="delete" (click)="deleteNew($index, project.id)">حذف</button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
 </div>

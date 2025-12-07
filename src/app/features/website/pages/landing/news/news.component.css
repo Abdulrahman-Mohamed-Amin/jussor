@@ -1,11 +1,11 @@
-
 .news-feature {
-  background: #fff;
-  border-radius: 0 0 30px 30px;
+  background: #f5f6f9;
   padding: 70px 0;
+  position: relative;
 }
-.container{
-      display: flex;
+
+.container {
+  display: flex;
   align-items: center;
   gap: 40px;
   flex-wrap: wrap;
@@ -20,8 +20,15 @@
 .news-img img {
   width: 100%;
   border-radius: 18px;
+  height: 400px;
   object-fit: cover;
-  box-shadow: 0 12px 30px rgba(0,0,0,.12);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .12);
+}
+
+@media(max-width:578px) {
+  .news-img img {
+    height: 300px;
+  }
 }
 
 .news-content {
@@ -82,4 +89,85 @@
   .news-content {
     text-align: center;
   }
+}
+
+
+
+.mySwiper2 {
+  position: relative;
+  padding-bottom: 40px;
+  /* مساحة للباجينيشن */
+}
+
+/* ==== تنسيق الأسهم (Navigation Buttons) ==== */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff;
+  /* لون الأيقونة */
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  background: var(--blue);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.3s ease;
+}
+
+::ng-deep .swiper-button-next::after,
+::ng-deep .swiper-button-prev::after {
+  font-size: 11px !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+/* تصغير حجم السهم */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* مكان الأسهم */
+.swiper-button-prev {
+  right: auto;
+  left: 20px;
+}
+
+.swiper-button-next {
+  left: auto;
+  right: 20px;
+}
+
+/* ==== تنسيق الباجينيشن (الدوائر) ==== */
+.swiper-pagination {
+  bottom: 0px !important;
+}
+
+::ng-deep .swiper-pagination-bullet {
+  background: var(--blue);
+  opacity: 0.5;
+  width: 10px;
+  height: 10px;
+  margin: 0 6px !important;
+  transition: 0.3s;
+  opacity: 0.3;
+}
+
+::ng-deep .swiper-pagination-bullet-active {
+  background: var(--blue);
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+@media(max-width:578px) {
+  .swiper-pagination {
+    bottom: 50px !important;
+  }
+
 }

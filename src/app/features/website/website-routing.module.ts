@@ -11,7 +11,7 @@ const routes: Routes = [];
     {path:'projects' , loadComponent:() => import("./pages/all-projects/all-projects.component").then(c => c.AllProjectsComponent)},
     {path:'services' , loadComponent:() => import("./pages/all-services/all-services.component").then(c => c.AllServicesComponent)},
     {path:'contact' , loadComponent:() => import("./pages/contact/contact.component").then(c => c.ContactComponent)},
-    {path:'project-detils' , loadComponent:() => import("./pages/projects-detils/projects-detils.component").then(c => c.ProjectsDetilsComponent)},
+    {path:'project-detils/:id' , loadComponent:() => import("./pages/projects-detils/projects-detils.component").then(c => c.ProjectsDetilsComponent)},
   ])],
   exports: [RouterModule]
 })

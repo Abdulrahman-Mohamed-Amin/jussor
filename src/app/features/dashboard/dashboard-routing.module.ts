@@ -6,7 +6,7 @@ const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forChild([
-    { path: "", redirectTo: "dashboard", pathMatch: "full" },
+    { path: "", redirectTo: "login", pathMatch: "full" },
     {
       path: "login",
       loadComponent: () =>
@@ -25,6 +25,7 @@ const routes: Routes = [];
         {path:'services' , loadComponent:() => import('./pages/our-services/our-services.component').then(c => c.OurServicesComponent)},
         {path:'news' , loadComponent:() => import('./pages/news/news.component').then(c => c.NewsComponent)},
       ]
+
       
     }
   ])],
