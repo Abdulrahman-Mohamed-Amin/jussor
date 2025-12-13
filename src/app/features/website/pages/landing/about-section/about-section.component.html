@@ -1,44 +1,37 @@
-<div class="bg-white">
-  <section class="about-section container">
-    <div class="about-wrapper">
-      <div class="about-image">
-        <img
-          src="assets/pexels-thelazyartist-1642125.jpg"
-          alt="about"
-        />
+<section class="projects-types modern">
+  <div class="container">
 
-        <!-- الـ LAY المعمول نفس اللي في التصميم -->
-        <div class="about-lay"></div>
+    <h2 class="section-title">{{"PROJECT_FIELDS.TITLE" | translate}} </h2>
 
-        <!-- النص داخل الـ Lay -->
-        <h2 class="about-lay-title">نبذة<br />عن شركة جسور</h2>
+    <div class="projects-grid">
+
+      <div class="project-card modern" routerLink="/Contracting">
+        <h3>{{"PROJECT_FIELDS.GENERAL_CONTRACTING.TITLE" | translate}}</h3>
+
+        <button class="project-btn">
+          {{ "PROJECT_FIELDS.GENERAL_CONTRACTING.BUTTON" | translate }}
+        </button>
       </div>
 
-      <div class="about-text">
-        <p>
-          تُعد <strong>شركة جسور المتحدة القابضة</strong> كيانًا رائدًا يجمع بين
-          الرؤية المستقبلية والخبرة العميقة في مجالات التطوير العقاري والتشييد
-          وإدارة الأصول العقارية. تأسست الشركة بهدف خلق نموذج متطور في القطاع
-          العقاري الذي يشهد نموًا سريعًا في المملكة العربية السعودية، من خلال
-          تقديم مشاريع ذات جودة عالية وتميز تقني. نعمل على ترسيخ وجودنا في سوق
-          التطوير العقاري عبر مشاريع سكنية وتجارية مبتكرة، تُمثل حلولًا عصرية
-          تلبي احتياجات العملاء وتسهم في رفع جودة الحياة.
-        </p>
+      <div class="project-card modern" routerLink="/Security-Projects">
+        <h3>{{"PROJECT_FIELDS.SECURITY_SAFETY.TITLE" | translate}} </h3>
+
+        <button class="project-btn" routerLink="/Security-Projects">
+          {{"PROJECT_FIELDS.SECURITY_SAFETY.BUTTON" | translate}}
+        </button>
       </div>
+
+
+      <div class="project-card modern" routerLink="/Shopping-Center">
+        <h3> {{"PROJECT_FIELDS.CENTER_MANAGEMENT.TITLE" | translate}} </h3>
+
+        <button class="project-btn">
+         {{"PROJECT_FIELDS.CENTER_MANAGEMENT.BUTTON" | translate}} 
+        </button>
+      </div>
+
     </div>
-  </section>
-</div>
+  </div>
+</section>
 
-<!-- <div class="vision-text">
-    <h2 class="v-title">رؤيتنا</h2>
-    <p>
-      نتطلع إلى ترسيخ مكانتنا كشركة رائدة في مجالات التطوير العقاري والتشييد، على مستوى المنطقة، من خلال تقديم مشاريع مبتكرة
-      ومستدامة تسهم في تطوير المدن وتعزيز جودة الحياة، بما يتوافق مع رؤية المملكة 2030.
-    </p>
-
-    <h2 class="v-title">رسالتنا</h2>
-    <p>
-      نسعى إلى بناء علاقات قائمة على الثقة والإنجاز، وتقديم مشاريع تلبي تطلعات العملاء وتسهم في تطوير المجتمعات،
-      مع تبنّي أعلى معايير الجودة، واستخدام أحدث التقنيات وتوظيف الكفاءات ذات الخبرة العالية.
-    </p>
-  </div> -->
+<router-outlet></router-outlet>

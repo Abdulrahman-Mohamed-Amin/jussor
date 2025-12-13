@@ -4,11 +4,12 @@ import { HeaderComponent } from "../../../../shared/header/header.component";
 import { FooterComponent } from "../../../../shared/footer/footer.component";
 import { ProjectService } from '../../../../core/services/projects/project.service';
 import { Project } from '../../../../core/interfaces/project';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-all-projects',
   standalone: true,
-  imports: [CardComponent, HeaderComponent, FooterComponent],
+  imports: [CardComponent, HeaderComponent, FooterComponent , TranslateModule],
   templateUrl: './all-projects.component.html',
   styleUrl: './all-projects.component.css'
 })

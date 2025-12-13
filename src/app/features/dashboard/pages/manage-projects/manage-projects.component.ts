@@ -23,7 +23,7 @@ export class ManageProjectsComponent implements OnInit {
 
   isEditMode: boolean = false;
 
-  selectedProjectId: number | null = null;
+  selectedProjectId: number = 0;
   selectedProject: Project | null = null;
 
   videoFile: File | null = null;
@@ -32,6 +32,8 @@ export class ManageProjectsComponent implements OnInit {
 
   interfaceImageFile: File | null = null;
   proposalFile: File | null = null;
+
+  imgsTodelete: string[] = []
 
   // ============= form ================
   addForm: FormGroup = new FormGroup({
@@ -44,13 +46,13 @@ export class ManageProjectsComponent implements OnInit {
     enlocationName: new FormControl(null, Validators.required),
     locationUrl: new FormControl('', Validators.required),
     latitude: new FormControl(0),
-    longitude: new FormControl(0),
+    longitude: new FormControl(''),
     videoFile: new FormControl(null),
     videoPath: new FormControl(null),
     projectImages: new FormControl([]),
     projectStatusId: new FormControl(null, Validators.required),
     projectTypeId: new FormControl(null, Validators.required),
-    interfaceImageFile: new FormControl(null),
+    interfaceImageFile: new FormControl(null, Validators.required),
     proposalFile: new FormControl(null),
     deleteInterfaceImage: new FormControl(false),
     deleteProposalFile: new FormControl(false),
@@ -64,7 +66,7 @@ export class ManageProjectsComponent implements OnInit {
     private toast: ToastrService
   ) { }
 
-  
+
 
 
 
@@ -72,6 +74,7 @@ export class ManageProjectsComponent implements OnInit {
     this.getTypes();
     this.getStatus();
     this.getProjects();
+
   }
 
   getStatus() {
@@ -145,6 +148,11 @@ export class ManageProjectsComponent implements OnInit {
   addProject() {
     const formData = new FormData();
 
+    const mapArr = this.addForm.value.longitude.split(",")
+
+    console.log();
+    
+    
     formData.append('ArTitle', this.addForm.value.arTitle);
     formData.append('ArDescription', this.addForm.value.arDescription);
     formData.append('EnTitle', this.addForm.value.enTitle);
@@ -193,7 +201,9 @@ export class ManageProjectsComponent implements OnInit {
             }
           },
           complete: () => {
-            window.location.reload()
+            setTimeout(() => {
+              location.reload()
+            }, 500);
           }
         });
       } else {
@@ -218,6 +228,8 @@ export class ManageProjectsComponent implements OnInit {
       locationUrl: project.locationUrl,
       latitude: project.latitude,
       longitude: project.longitude,
+      projectStatusId: project.projectStatusId,
+      projectTypeId: project.projectTypeId,
 
     });
 
@@ -230,13 +242,102 @@ export class ManageProjectsComponent implements OnInit {
     this.proposalFile = null;
     this.imageFiles = [];
 
+
+    const control = this.addForm.get('interfaceImageFile');
+
+    if (this.isEditMode) {
+      control?.clearValidators();
+    }
+
+    control?.updateValueAndValidity();
+
+  }
+
+
+  sendEditRequest() {
+    const formData = new FormData();
+
+    formData.append('ArTitle', this.addForm.value.arTitle);
+    formData.append('ArDescription', this.addForm.value.arDescription);
+    formData.append('EnTitle', this.addForm.value.enTitle);
+    formData.append('EnDescription', this.addForm.value.enDescription);
+    formData.append('arlocationName', this.addForm.value.arlocationName);
+    formData.append('enlocationName', this.addForm.value.enlocationName);
+    formData.append('LocationUrl', this.addForm.value.locationUrl);
+    formData.append('Latitude', this.addForm.value.latitude);
+    formData.append('Longitude', this.addForm.value.longitude);
+    formData.append('ProjectStatusId', this.addForm.value.projectStatusId);
+    formData.append('ProjectTypeId', this.addForm.value.projectTypeId);
+    formData.append('deleteInterfaceImage', this.addForm.value.deleteInterfaceImage);
+    formData.append('deleteProposalFile', this.addForm.value.deleteProposalFile);
+
+
+    if (this.interfaceImageFile) {
+      formData.append('interfaceImageFile', this.interfaceImageFile);
+    }
+
+    if (this.proposalFile) {
+      formData.append('proposalFile', this.proposalFile);
+    }
+    if (this.videoFile) {
+      formData.append('videoFile', this.videoFile);
+    }
+
+    // صور متعددة
+    if (this.imageFiles.length > 0) {
+      this.imageFiles.forEach((img) => {
+        formData.append('imageFiles', img);
+      });
+    }
+
+    if (this.imgsTodelete.length > 0) {
+      this.imgsTodelete.forEach(img => {
+        formData.append('ImagesToDelete', img);
+      });
+    }
+
+
+
+    if (this.addForm.valid) {
+      this._projects.editProject(this.selectedProjectId, formData).subscribe({
+        next: (res) => {
+          
+          this.toast.success("تم تعديل المشروع بنجاح")
+        },
+        error: (err) => {
+          if (err.status == 401) {
+            this.toast.error("انتهت الجلسة سجل الدخول مرة أخري")
+          } else {
+            this.toast.error("حدث خطأ ما")
+
+          }
+        },
+        complete: () => {
+          setTimeout(() => {
+            location.reload()
+          }, 500);
+        }
+      })
+    } else {
+      this.toast.error("بعض الحقول فارغة")
+    }
   }
 
 
 
+  getSelectedImgsTodelete(src: string) {
+    const index = this.imgsTodelete.indexOf(src)
+    if (index === -1) {
+      this.imgsTodelete.push(src)
+      console.log(this.imgsTodelete);
 
+    } else {
 
+      this.imgsTodelete.splice(index, 1)
 
+    }
+
+  }
 
   // ====================== delete ===================
   deleteProject(idx: number, id: number) {
@@ -253,6 +354,11 @@ export class ManageProjectsComponent implements OnInit {
 
         }
       },
+      complete: () => {
+        setTimeout(() => {
+          location.reload()
+        }, 500);
+      }
     });
   }
 
@@ -260,7 +366,7 @@ export class ManageProjectsComponent implements OnInit {
   onSubmit() {
 
     if (this.isEditMode) {
-      // this.sendEditRequest();
+      this.sendEditRequest();
     } else {
       this.addProject();
     }
@@ -270,15 +376,36 @@ export class ManageProjectsComponent implements OnInit {
 
   allowEnglishOnly(event: any) {
     const input = event.target;
-    input.value = input.value.replace(/[^a-zA-Z0-9 ]/g, '');
+    input.value = input.value.replace(/[^a-zA-Z0-9\s@#._-]/g, '');
   }
+
+  preventEnglishPaste(event: ClipboardEvent) {
+    const pastedText = event.clipboardData?.getData('text') || '';
+    const englishRegex = /^[a-zA-Z0-9\s@#._-]+$/;
+
+    if (!englishRegex.test(pastedText)) {
+      event.preventDefault(); // ❌ يمنع اللصق فقط لو فيه عربي
+    }
+  }
+
+
 
   // ================ arabic only ================
 
   allowArabicOnly(event: any) {
     const input = event.target;
-    input.value = input.value.replace(/[^ء-ي\s\u0621-\u064A]/g, '');
+    input.value = input.value.replace(/[^ء-ي0-9\s@#._-]/g, '');
   }
+
+  preventArabicPaste(event: ClipboardEvent) {
+    const pastedText = event.clipboardData?.getData('text') || '';
+    const arabicRegex = /^[ء-ي0-9\s@#._-]+$/;
+
+    if (!arabicRegex.test(pastedText)) {
+      event.preventDefault(); // ❌ يمنع اللصق فقط لو فيه حروف غير عربية
+    }
+  }
+
 
   // =================== vedio only ==================
 

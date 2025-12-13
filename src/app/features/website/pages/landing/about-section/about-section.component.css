@@ -1,105 +1,138 @@
 
-/* ----- SECTION ----- */
-.about-section {
-  padding:0 0 70px 0;
+
+/* السكشن */
+.projects-types {
+  padding: 0 20px 100px;
+  background: #fff;
 }
 
-.about-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
+/* العنوان */
+.section-title {
+  text-align: center;
+  font-size: 44px;
+  font-weight: 900;
+  margin-bottom: 70px;
+  color: var(--sec);
 }
 
-/* ----- IMAGE + LAY SHAPE ----- */
-.about-image {
+/* الجريد */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+}
+
+/* الكرت العصري */
+.project-card.modern {
+  background: linear-gradient(145deg, #fff, #f4f6fa);
+  padding: 40px 20px;
+  border-radius: 26px;
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.08),
+    inset 0 0 0 rgba(0,0,0,0);
+  transition: .45s ease;
+  text-align: center;
   position: relative;
-  flex: 1;
-  min-width: 330px;
+  overflow: hidden;
+  border: 1px solid var(--sec2);
 }
 
-.about-image img {
-  width: 100%;
-  border-radius: 35px;
-  object-fit: cover;
-  box-shadow: var(--shadow);
-  height: 350px;
-}
-
-/* 🔥 الـ LAY EXACT */
-.about-lay {
+/* طبقة اللمعة */
+.project-card.modern::after {
+  content: "";
   position: absolute;
   inset: 0;
-  background: var(--blue);
-  opacity: .55;
-  border-radius: 35px;
-
-  /* هنا السحر: نفس شكل الـ “نصف مثلث منحني” */
-  clip-path: polygon(
-    100% 0%,   /* يمين فوق */
-    65% 0%,    /* نقطة نزول */
-    40% 50%,   /* منتصف المثلث */
-    65% 100%,  /* نقطة صعود */
-    100% 100%  /* يمين تحت */
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.5),
+    transparent
   );
+  transform: translateX(-100%);
+  transition: .7s ease;
 }
 
-/* ----- TEXT INSIDE LAY ----- */
-.about-lay-title {
-  position: absolute;
-  right: 60px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #fff;
-  font-size: 42px;
+.project-card.modern:hover::after {
+  transform: translateX(100%);
+}
+
+.project-card.modern:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+/* العنوان داخل الكرت */
+.project-card.modern h3 {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--blue);
+  margin-bottom: 40px;
+  transition: .3s ease;
+}
+
+/* الزرار الفخم */
+.project-btn {
+  padding: 10px 20px;
+  border-radius: 9px;
+  border: none;
   font-weight: 800;
-  line-height: 1.3;
-  z-index: 10;
-  text-align: right;
-  text-shadow: 0 3px 8px rgba(0,0,0,.35);
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue), var(--sec));
+  cursor: pointer;
+  transition: .4s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,.2);
 }
 
-/* ----- PARAGRAPH ----- */
-.about-text {
-  flex: 1;
-  min-width: 330px;
+/* تأثير الزر عند المرور */
+.project-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.3);
+  filter: brightness(1.1);
 }
 
-.about-text p {
-  font-size: 17px;
-  line-height: 2;
-  color: #333;
+/* تغير ألوان النص عند المرور */
+.project-card.modern:hover h3 {
+  color: var(--sec);
 }
 
-
-/* ----- RESPONSIVE ----- */
-@media(max-width: 992px) {
-  .about-wrapper {
-    flex-direction: column;
-    text-align: center;
-    padding: 0 15px;
+/* ✅ Responsive */
+@media (max-width: 991px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
   }
-  .about-section {
-  padding:30px 0 70px 0;
+
+  .section-title {
+    font-size: 36px;
+  }
 }
 
-}
-@media(max-width: 578px) {
-  .about-lay-title{
-    font-size: 25px;
+@media (max-width: 768px) {
+    .project-card.modern h3{
+    font-size: 17px;
   }
-.about-text p{
+.project-btn {
+  padding:  10px;
+  border-radius: 9px;
+  border: none;
+  font-weight: 800;
   font-size: 12px;
-}
-.about-image {
-  min-width: 95%;
 
 }
-.about-image img{
-  height: 200px;
 }
-.about-text {
-  flex: 1;
-  min-width: 95%;
-}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 32px;
+  }
+  .projects-types{
+    padding: 30px 20px 80px;
+    
+  }
+
 }

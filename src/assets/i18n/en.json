@@ -1,0 +1,192 @@
+{
+    "HEADER": {
+        "HOME": "Home",
+        "ABOUT": "About Us",
+        "PROJECTS": "Our Projects",
+        "SERVICES": "Our Services",
+        "CONTACT": "Contact Us"
+    },
+    "HERO": {
+        "TITLE": "Jussor United  Holding Company",
+        "DES": "A leading entity combining a forward-looking vision with deep expertise in real estate development, construction, and asset management."
+    },
+    "PROJECT_FIELDS": {
+        "TITLE": "Our Projects Fields",
+        "GENERAL_CONTRACTING": {
+            "TITLE": "General Contracting Projects",
+            "BUTTON": "View Projects"
+        },
+        "SECURITY_SAFETY": {
+            "TITLE": "Security & Safety Projects",
+            "BUTTON": "View Projects"
+        },
+        "CENTER_MANAGEMENT": {
+            "TITLE": "Commercial Center Management Projects",
+            "BUTTON": "View Projects"
+        }
+    },
+    "PROJECTS": {
+        "PROJECTS_TITLE": "Our Projects",
+        "DES": "A collection of distinguished real estate projects with modern construction standards and quality that exceeds expectations.",
+        "BTN": "View Details"
+    },
+    "VALUES": {
+        "INNOVATION": "Innovation and Development",
+        "QUALITY": "Quality and Professionalism",
+        "Customer": "Customer Satisfaction",
+        "Environmental": "Environmental Sustainability",
+        "Clarity": "Transparency and Clarity"
+    },
+    "SERVICES": {
+        "TITLE": "Our Services",
+        "DES": "Comprehensive solutions in real estate development, construction, and project management",
+        "WHY_US": {
+            "TITLE": "Why Choose Us?",
+            "SEC1": {
+                "TITLE": "Extensive Experience",
+                "DES": "We have a long track record of managing, operating, and developing real estate projects to the highest standards."
+            },
+            "SEC2": {
+                "TITLE": "Specialized Team",
+                "DES": "We have a qualified engineering and operational team that works according to the latest best practices."
+            },
+            "SEC3": {
+                "TITLE": "Tangible Results",
+                "DES": "We make a real difference through innovative solutions that ensure the growth and sustainability of projects."
+            },
+            "SEC4": {
+                "TITLE": "Reliability",
+                "DES": "We are committed to the highest standards of transparency and quality in all our work and projects."
+            }
+        },
+        "CTA": {
+            "TITLE": "Ready to serve your next project",
+            "DES": "Contact us for a free consultation and let us help you develop your project with a professional vision.",
+            "BTN": "Contact us now"
+        }
+    },
+    "FEATURES": {
+        "VARIETY": {
+            "TITLE": "Variety of Options",
+            "DESC": "We provide a wide range of real estate products with flexible solutions that meet different needs and ensure a distinctive customer experience."
+        },
+        "DESIGN": {
+            "TITLE": "Modern Designs",
+            "DESC": "We design contemporary spaces that balance comfort and beauty, offering multi-use solutions suitable for modern lifestyles."
+        },
+        "AFTER_SALES": {
+            "TITLE": "After-Sales Services",
+            "DESC": "We offer integrated post-delivery support including maintenance, consultations, and operational services to ensure your comfort."
+        },
+        "WARRANTY": {
+            "TITLE": "Warranties",
+            "DESC": "Extended warranties on workmanship and materials to enhance construction quality and project sustainability."
+        }
+    },
+    "NEWS": {
+        "TITLE": "Our News"
+    },
+    "FOOTER": {
+        "CONTACT": {
+            "TITLE": "Contact Us",
+            "LOCATION": "Jeddah - Saudi Arabia"
+        },
+        "SERVICES": {
+            "TITLE": "Services",
+            "DEVELOPMENT": "Real Estate Development",
+            "CONSTRUCTION": "Construction",
+            "CENTER_MANAGEMENT": "Commercial Center Management",
+            "HOTEL_MANAGEMENT": "Hotel Management",
+            "TECH_PRODUCTS": "Technical Products"
+        },
+        "QUICK_LINKS": {
+            "TITLE": "Quick Links",
+            "HOME": "Home",
+            "PROJECTS": "Our Projects",
+            "SERVICES": "Our Services",
+            "ABOUT": "About Us",
+            "CONTACT": "Contact Us"
+        },
+        "ABOUT": {
+            "TITLE": "United Jusoor Holding Company",
+            "DESC": "A leading company in real estate development and project management, delivering high-quality residential and commercial solutions with exceptional standards."
+        }
+    },
+    "CONTACT": {
+        "TITLE": "Contact Us",
+        "FORM": {
+            "TITLE": "Contact information",
+            "ADDRESS": "Jeddah – Kingdom of Saudi Arabia",
+            "NAME": "Full Name",
+            "EMAIL": "Email",
+            "PHONE": "Phone Number",
+            "MESSAGE": "Your Message",
+            "SUBJECT": "Subject",
+            "SEND": "Send"
+        },
+        "ABOUT_SEC": {
+            "DESC": "We welcome your inquiries and suggestions at any time.",
+            "WORK": "9 AM – 6 PM",
+            "SEND": "Send Your Message",
+            "FOLLOW": "Follow Us",
+            "WHY": {
+                "TITLE": "Why Is Contacting Us Important?",
+                "FREE": {
+                    "TITLE": "Free Consultation",
+                    "DESC": "We provide you with an initial vision to solve your problem or develop your project before any commitment."
+                },
+                "FAST": {
+                    "TITLE": "Fast Response",
+                    "DESC": "A dedicated team ready to respond to your inquiry as quickly as possible."
+                },
+                "SOLUTION": {
+                    "TITLE": "Professional Solutions",
+                    "DESC": "We support you with engineering and technical expertise to deliver practical and feasible solutions."
+                }
+            },
+            "LOCATION": "Our Location"
+        }
+    },
+    "ABOUT_US": {
+        "TITLE": "About Us ?",
+        "DESC": "United Bridges Holding Company is a remarkable entity that combines a forward-looking vision with extensive experience in real estate development, leading construction, and diverse assets, making it a pioneering model in building integrated projects that are interconnected with sustainability and contribute to enhancing urban development. Through a professional team with extensive experience in managing major projects, the company can secure its place as a reliable partner with its own subsidiary functions.",
+        "SEC1": {
+            "TITLE": "Continuous Growth… and Strong Partnerships",
+            "DESC": "Jusoor United Holding is developing a balanced portfolio of real estate and investment projects, focusing on quality execution and creating distinctive residential and commercial experiences.",
+            "BOX1": "Years of Experience",
+            "BOX2": "Completed Projects",
+            "BOX3": "Jusoor's Project Portfolio of Million",
+            "BOX4": "Investment Sectors"
+        },
+        "SEC2": {
+            "TITLE": "About the Chairman of the Board",
+            "DESC": "Dr. Ali bin Ibrahim Al-Mashi serves as Chairman of the Board of Directors of Jusoor United Holding Company. He also chairs Jusoor Law Firm and Jusoor Housewares, reflecting his diverse experience and proven ability to lead multiple entities to success. He holds a Master's degree and a PhD in Economics and Business Administration, and possesses an International Arbitration Certificate and a Professional Training Accreditation Certificate. With over 13 years of experience in senior positions, he has combined academic expertise with practical application, contributing to the development of a strategic vision based on innovation, quality, and operational efficiency.",
+            "JOP": "Chairman of the Board",
+            "NAME": "Dr. Ali bin Ibrahim Al-Mashi"
+        },
+        "SEC3": {
+            "VISION": {
+                "TITLE": "Our Vision",
+                "DESC": "We aspire to establish our position as a leading company in real estate development and construction across the region by delivering innovative and sustainable projects that contribute to urban development, enhance quality of life, and support the goals of Saudi Vision 2030."
+            },
+            "MISSION": {
+                "TITLE": "Our Mission",
+                "DESC": "We strive to build relationships based on trust and efficiency, driven by our commitment to achieving the satisfaction of our clients and partners through investing in the latest technologies and employing highly experienced professionals to deliver integrated solutions that meet market needs and keep pace with change."
+            },
+            "GOAL": {
+                "TITLE": "Our Goal",
+                "DESC": "We aim to enhance institutional performance and improve operational efficiency to achieve sustainable results and comprehensive structuring of our practices by expanding our business portfolio and investing in promising sectors, especially in technology and digital transformation."
+            }
+        }
+    },
+
+    "PROJECT":{
+        "PROFILE":"Profile",
+        "ABOUT":"About the project" ,
+        "PHOTOS":"Project Photos",
+        "TYPE":"Project Type",
+        "STATUS":"Project Status",
+        "VIDEO":"Project Video",
+        "LOCATION":"Location"
+    }
+}

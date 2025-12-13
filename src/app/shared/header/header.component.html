@@ -1,17 +1,28 @@
 <header class="bg-white ">
     <div class="container">
-        <nav class="d-flex justify-content-end align-items-center position-relative">
-            <img src="assets/logo.webp " alt="logo" class="position-absolute">
+        <nav class="d-flex justify-content-between align-items-center">
+            <img src="assets/logo.webp " alt="logo" class="">
 
             <ul class="links" [ngClass]="{'open': close}">
-                <li routerLink="/home" routerLinkActive="active" ><a>الرئيسية</a></li>
-                <li routerLink="/about" routerLinkActive="active"><a>من نحن</a></li>
-                <li routerLink="/projects" routerLinkActive="active"><a >مشاريعنا</a></li>
-                <li routerLink="/services" routerLinkActive="active"><a>خدماتنا</a></li>
-                <li routerLink="/contact" routerLinkActive="active"><a>اتصل بنا</a></li>
+                <li routerLink="/home" routerLinkActive="active"><a>{{'HEADER.HOME' | translate}}</a></li>
+                <li routerLink="/about" routerLinkActive="active"><a>{{'HEADER.ABOUT' | translate}}</a></li>
+                <li routerLink="/projects" routerLinkActive="active"><a>{{'HEADER.PROJECTS' | translate}}</a></li>
+                <li routerLink="/services" routerLinkActive="active"><a>{{'HEADER.SERVICES' | translate}}</a></li>
+                <li routerLink="/contact" routerLinkActive="active"><a>{{'HEADER.CONTACT' | translate}}</a></li>
                 <i class="fas fa-xmark d-lg-none d-block close" (click)="close = false"></i>
             </ul>
-            <i class="bar fas fa-bars d-lg-none d-block" (click)="close = true" ></i>
+
+            <div class="d-flex gap-2 align-items-center">
+
+                <button (click)="switcLang()" class="lang_btn">{{lang == "ar" ? "EN" : "AR" }}</button>
+                <i class="bar fas fa-bars d-lg-none d-block" (click)="close = true"></i>
+            </div>
         </nav>
     </div>
 </header>
+
+@if(isLoading){
+<div class="loader-overlay">
+    <div class="spinner"></div>
+</div>
+}

@@ -16,7 +16,12 @@
 
       <div class="col-md-4 text-md-end mt-3 mt-md-0">
         @if(project?.proposalFilePath){
-        <a class="project-btn" [href]="url + project?.proposalFilePath"> الملف التعريفي</a>
+        <a class="project-btn " [href]="url + project?.proposalFilePath" target="_blank"> {{"PROJECT.PROFILE" |
+          translate}}</a>
+        }
+        @if(project?.locationUrl){
+        <a class="project-btn mx-3" [href]="url + project?.locationUrl" target="_blank"> {{"PROJECT.LOCATION" |
+          translate}}</a>
         }
       </div>
     </div>
@@ -26,7 +31,7 @@
       <img [src]="url + project?.interfaceImagePath" alt="" />
     </div>
     <!-- DESCRIPTION -->
-    <h2 class="section-title">عن المشروع</h2>
+    <h2 class="section-title">{{"PROJECT.ABOUT" | translate}}</h2>
     <p class="project-desc">
       {{lang == "ar" ? project?.arDescription : project?.enDescription}}
     </p>
@@ -34,7 +39,7 @@
     <div class="quick-info row g-4 mb-5">
       <div class="col-md-3 col-6">
         <div class="qi-box">
-          <h4>حالة المشروع</h4>
+          <h4>{{"PROJECT.STATUS" | translate}}</h4>
           <p class="status ready">{{lang == "ar" ? project?.projectStatus?.arName : project?.projectStatus?.enName}}</p>
         </div>
       </div>
@@ -43,15 +48,16 @@
 
       <div class="col-md-3 col-6">
         <div class="qi-box">
-          <h4>نوع المشروع</h4>
+          <h4>{{"PROJECT.TYPE" | translate}}</h4>
           <p>{{lang == "ar" ? project?.projectType?.arName : project?.projectType?.enName}}</p>
         </div>
       </div>
 
     </div>
 
+
     <!-- GALLERY -->
-    <h2 class="section-title mb-3">صور المشروع</h2>
+    <h2 class="section-title mb-3">{{"PROJECT.PHOTOS" | translate}}</h2>
     <div class="gallery row g-3 mb-5">
       @for(img of project?.projectImages ; track img.id ){
       <div class="col-md-4 col-6">
@@ -59,9 +65,22 @@
       </div>
       }
     </div>
-
+    <!-- viedo  -->
+    @if(project?.videoPath){
+    <h2 class="section-title mb-3 mt-5">{{"PROJECT.VIDEO" |translate}}</h2>
+    <video controls [src]="url + project?.videoPath" class="video"></video>
+    }
 
   </div>
+
+  <iframe
+  width="100%"
+  height="300"
+  style="border:0"
+  loading="lazy"
+  allowfullscreen
+  src="https://www.google.com/maps?q=21.56650558497238, 39.15063712746945&output=embed">
+</iframe>
 </section>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>

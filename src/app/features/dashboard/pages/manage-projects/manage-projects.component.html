@@ -17,7 +17,7 @@
         <div class="form-group">
           <label for="artitle">اسم المشروع عربي <span>*</span></label>
           <input type="text" id="artitle" class="form-control" (input)="allowArabicOnly($event)"
-            placeholder="الادخال باللغة العربية فقط" formControlName="arTitle" />
+            placeholder="الادخال باللغة العربية فقط" formControlName="arTitle" (paste)="preventArabicPaste($event)" />
         </div>
       </div>
 
@@ -26,7 +26,8 @@
         <div class="form-group">
           <label for="entitle">اسم المشروع انجليزي <span>*</span></label>
           <input type="text" id="entitle" class="form-control" (input)="allowEnglishOnly($event)"
-            placeholder="الادخال باللغة الانجليزية فقط" formControlName="enTitle" />
+            placeholder="الادخال باللغة الانجليزية فقط" formControlName="enTitle"
+            (paste)="preventEnglishPaste($event)" />
         </div>
       </div>
 
@@ -35,7 +36,8 @@
         <div class="form-group">
           <label for="ardes">وصف المشروع عربي <span>*</span></label>
           <input type="text" id="ardes" class="form-control" (input)="allowArabicOnly($event)"
-            placeholder="الادخال باللغة العربية فقط" formControlName="arDescription" />
+            (paste)="preventArabicPaste($event)" placeholder="الادخال باللغة العربية فقط"
+            formControlName="arDescription" />
         </div>
       </div>
 
@@ -44,7 +46,8 @@
         <div class="form-group">
           <label for="endes">وصف المشروع انجليزي <span>*</span></label>
           <input type="text" id="endes" class="form-control" (input)="allowEnglishOnly($event)"
-            placeholder="الادخال باللغة الانجليزية فقط" formControlName="enDescription" />
+            (paste)="preventEnglishPaste($event)" placeholder="الادخال باللغة الانجليزية فقط"
+            formControlName="enDescription" />
         </div>
       </div>
 
@@ -53,7 +56,8 @@
         <div class="form-group">
           <label for="adress">عنوان المشروع عربي <span>*</span></label>
           <input type="text" id="adress" class="form-control" (input)="allowArabicOnly($event)"
-            placeholder="الادخال باللغة العربية فقط" formControlName="arlocationName" />
+            (paste)="preventArabicPaste($event)" placeholder="الادخال باللغة العربية فقط"
+            formControlName="arlocationName" />
         </div>
       </div>
       <!--===================== form group ==================-->
@@ -61,7 +65,8 @@
         <div class="form-group">
           <label for="adress">عنوان المشروع انجليزي <span>*</span></label>
           <input type="text" id="adress" class="form-control" (input)="allowEnglishOnly($event)"
-            placeholder="الادخال باللغة العربية فقط" formControlName="enlocationName" />
+            (paste)="preventEnglishPaste($event)" placeholder="الادخال باللغة العربية فقط"
+            formControlName="enlocationName" />
         </div>
       </div>
 
@@ -111,7 +116,7 @@
       <!--===================== الصور ==================-->
       <div class="col-md-6 col-12">
         <div class="form-group">
-          <label for="status">اختر صور المشروع <span>*</span></label>
+          <label for="status">اختر صور المشروع<span class="requierd">(اختياري)</span> <span>*</span></label>
           <input type="file" accept="image/*" multiple class="form-control" formControlName="projectImages" id="images"
             (change)="onImagesSelected($event)">
         </div>
@@ -120,17 +125,30 @@
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="status">اختر الملف التعريفي للمشروع<span class="requierd">(اختياري)</span> <span>*</span></label>
-          <input type="file" accept="file/*" multiple class="form-control" formControlName="proposalFile"
+          <input type="file" accept="application/pdf" class="form-control" formControlName="proposalFile"
             (change)="onProposalFileSelected($event)">
         </div>
+        @if(isEditMode){
+        <div class="delete_files d-flex gap-2 align-items-center">
+          <input type="checkbox" formControlName="deleteProposalFile" class="check_box">
+          <label for="">مسح الملف التعريفي</label>
+        </div>
+        }
       </div>
+      <!--===================== الخريطة ==================-->
+      <!-- <div class="col-md-6 col-12">
+        <div class="form-group">
+          <label for="status">ادخل رقم خريطة المشروع<span class="requierd">(اختياري)</span> <span>*</span></label>
+          <input type="text" class="form-control" formControlName="longitude">
+        </div>
+      </div> -->
 
       <!--===================== VIDEO ==================-->
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="vedio">اختر فيديو<span class="requierd">(اختياري)</span> <span>*</span></label>
-          <input type="file" id="vedio" class="form-control" (change)="onVideoSelected($event)" placeholder="فيديو فقط"
-            formControlName="videoPath" />
+          <input type="file" id="vedio" class="form-control" accept="video/*" (change)="onVideoSelected($event)"
+            placeholder="فيديو فقط" formControlName="videoPath" />
         </div>
 
         @if(errorMessage !== ''){
@@ -140,13 +158,14 @@
 
     </div>
     @if(selectedProject && isEditMode){
-      <div class="row gy-4">
+    <div class="row gy-4">
       <h4 class="img_delete_title">حذف الصور</h4>
       @for(img of selectedProject.projectImages; track img.id){
       <div class="col-2">
-        <div class="img_cont">
+        <div class="img_cont" [ngClass]="{'active': imgsTodelete.includes(img.imagePath)}">
           <i class="fas fa-trash delete"></i>
-          <img [src]="'https://realstatesaudi.runasp.net' + img.imagePath" alt="">
+          <img [src]="'https://realstatesaudi.runasp.net' + img.imagePath" alt="" class="selected_img"
+            (click)="getSelectedImgsTodelete(img.imagePath)">
         </div>
       </div>
       }
@@ -170,7 +189,7 @@
     <thead>
       <tr>
         <th>اسم المشروع</th>
-        <th>حالة المشروع</th>
+        <th>نوع المشروع</th>
         <th>الإجراءات</th>
       </tr>
     </thead>
@@ -179,7 +198,7 @@
       @for(project of projects; track $index){
       <tr>
         <td>{{ project.arTitle }}</td>
-        <td>{{ project.projectStatus?.arName }}</td>
+        <td>{{ project.projectType?.arName }}</td>
         <td>
           <button class="edit-btn" (click)="editProject(project.id, project) ; close = true">تعديل</button>
           <button class="delete" (click)="deleteProject($index, project.id)">حذف</button>

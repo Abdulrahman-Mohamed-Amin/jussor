@@ -1,3 +1,4 @@
+import { Category1Component } from './pages/projects-categories/category-1/category-1.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -12,6 +13,9 @@ const routes: Routes = [];
     {path:'services' , loadComponent:() => import("./pages/all-services/all-services.component").then(c => c.AllServicesComponent)},
     {path:'contact' , loadComponent:() => import("./pages/contact/contact.component").then(c => c.ContactComponent)},
     {path:'project-detils/:id' , loadComponent:() => import("./pages/projects-detils/projects-detils.component").then(c => c.ProjectsDetilsComponent)},
+    {path:'Security-Projects' , loadComponent:() => import("./pages/projects-categories/category-1/category-1.component").then(c => c.Category1Component)},
+    {path:'Contracting' , loadComponent:() => import("./pages/projects-categories/category-2/category-2.component").then(c => c.Category2Component)},
+    {path:'Shopping-Center' , loadComponent:() => import("./pages/projects-categories/category-3/category-3.component").then(c => c.Category3Component)},
   ])],
   exports: [RouterModule]
 })

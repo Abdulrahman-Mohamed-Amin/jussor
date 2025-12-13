@@ -1,7 +1,7 @@
 <app-header></app-header>
 <section class="contact-hero">
-<h1>تواصل معنا</h1>
-<p>يسعدنا استقبال استفساراتكم ومقترحاتكم في أي وقت</p>
+<h1>{{"CONTACT.TITLE" | translate}}</h1>
+<p>{{"CONTACT.ABOUT_SEC.DESC" | translate}}</p>
 </section>
 <div class="bg-white">
     
@@ -15,42 +15,42 @@
     <div class="col-lg-8 col-md-7 col-12">
       <div class="form-panel p-4">
 
-        <h2 class="sec-head mb-4">أرسل رسالتك</h2>
+        <h2 class="sec-head mb-4">{{"CONTACT.ABOUT_SEC.SEND" | translate}}</h2>
 
         <form class="row g-3">
 
           <!-- NAME -->
           <div class="col-md-6">
-            <label class="form-label">الاسم الكامل</label>
-            <input type="text" class="form-control modern-inp" placeholder="اسمك">
+            <label class="form-label">{{"CONTACT.FORM.NAME" | translate}}</label>
+            <input type="text" class="form-control modern-inp">
           </div>
 
           <!-- EMAIL -->
           <div class="col-md-6">
-            <label class="form-label">البريد الإلكتروني</label>
-            <input type="email" class="form-control modern-inp" placeholder="example@mail.com">
+            <label class="form-label">{{"CONTACT.FORM.EMAIL" | translate}}</label>
+            <input type="email" class="form-control modern-inp" >
           </div>
 
           <!-- PHONE -->
           <div class="col-md-6">
-            <label class="form-label">رقم الجوال</label>
+            <label class="form-label">{{"CONTACT.FORM.PHONE" | translate}}</label>
             <input type="text" class="form-control modern-inp" placeholder="+966">
           </div>
 
           <!-- SUBJECT -->
           <div class="col-md-6">
-            <label class="form-label">موضوع الرسالة</label>
-            <input type="text" class="form-control modern-inp" placeholder="موضوع الرسالة">
+            <label class="form-label">{{"CONTACT.FORM.SUBJECT" | translate}}</label>
+            <input type="text" class="form-control modern-inp">
           </div>
 
           <!-- MESSAGE -->
           <div class="col-12">
-            <label class="form-label">الرسالة</label>
-            <textarea class="form-control modern-inp" rows="6" placeholder="اكتب رسالتك هنا..."></textarea>
+            <label class="form-label">{{"CONTACT.FORM.MESSAGE" | translate}}</label>
+            <textarea class="form-control modern-inp" rows="6"></textarea>
           </div>
 
           <div class="col-12">
-            <button class="send-btn-modern w-100">إرسال الرسالة</button>
+            <button class="send-btn-modern w-100">{{"CONTACT.FORM.SEND" | translate}}</button>
           </div>
 
         </form>
@@ -62,7 +62,7 @@
     <div class="col-lg-4 col-md-5 col-12">
       <div class="info-panel p-4">
 
-        <h2 class="sec-head mb-4">معلومات التواصل</h2>
+        <h2 class="sec-head mb-4">{{"CONTACT.FORM.TITLE" | translate}}</h2>
 
         <!-- PHONE -->
         <div class="info-line d-flex align-items-center mb-3">
@@ -85,7 +85,7 @@
           <svg class="icon24" viewBox="0 0 24 24">
             <path d="M12 2c4.4 0 8 3.6 8 8 0 5.3-8 12-8 12S4 15.3 4 10c0-4.4 3.6-8 8-8Zm0 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" fill="currentColor"/>
           </svg>
-          <span>جدة – المملكة العربية السعودية</span>
+          <span>{{"CONTACT.FORM.ADDRESS" | translate}}</span>
         </div>
 
         <!-- TIME -->
@@ -94,10 +94,10 @@
             <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" stroke-width="1.4"/>
             <path d="M12 6v6l3.5 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
           </svg>
-          <span>9 صباحًا – 6 مساءً</span>
+          <span>{{"CONTACT.ABOUT_SEC.WORK" | translate}}</span>
         </div>
 
-        <h3 class="social-head mb-3">تابعنا</h3>
+        <h3 class="social-head mb-3">{{"CONTACT.ABOUT_SEC.FOLLOW" | translate}}</h3>
 
         <div class="d-flex gap-3">
           <!-- X -->
@@ -135,22 +135,22 @@
   <!-- why to contact us  -->
 
   <section class="contact-reasons container mb-5">
-    <h2 class="section-title">لماذا التواصل معنا مهم؟</h2>
+    <h2 class="section-title">{{"CONTACT.ABOUT_SEC.WHY.TITLE" | translate}}</h2>
 
     <div class="reasons-grid px-lg-0 px-2">
       <div class="reason-card">
-        <h3>1. استشارة مجانية</h3>
-        <p>نقدم لك تصور أولي لحل مشكلتك أو تطوير مشروعك قبل أي التزام.</p>
+        <h3>{{"CONTACT.ABOUT_SEC.WHY.FREE.TITLE" | translate}}</h3>
+        <p>{{"CONTACT.ABOUT_SEC.WHY.FREE.DESC" | translate}}</p>
       </div>
 
       <div class="reason-card">
-        <h3>2. سرعة الرد</h3>
-        <p>فريق متخصص جاهز للرد على استفسارك خلال أقرب وقت.</p>
+        <h3>{{"CONTACT.ABOUT_SEC.WHY.FAST.TITLE" | translate}}</h3>
+        <p>{{"CONTACT.ABOUT_SEC.WHY.FREE.DESC" | translate}}</p>
       </div>
 
       <div class="reason-card">
-        <h3>3. حلول احترافية</h3>
-        <p>نساعدك بخبرة هندسية وتقنية، لنقدّم لك حلولًا عملية ومجدية.</p>
+        <h3>{{"CONTACT.ABOUT_SEC.WHY.SOLUTION.TITLE" | translate}}</h3>
+        <p>{{"CONTACT.ABOUT_SEC.WHY.SOLUTION.DESC" | translate}}</p>
       </div>
     </div>
   </section>
@@ -158,7 +158,7 @@
   <!-- google map  -->
 
   <section class="map-section container pb-4">
-    <h2 class="section-title mb-3">موقعنا</h2>
+    <h2 class="section-title mb-3">{{'CONTACT.ABOUT_SEC.LOCATION' |translate}}</h2>
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1497.577303751609!2d39.15362072289255!3d21.58096531197836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sar!2ssa!4v1763743241450!5m2!1sar!2ssa"
       class="w-100"

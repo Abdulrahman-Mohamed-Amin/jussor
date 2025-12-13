@@ -1,11 +1,14 @@
+// ===================== Imports =====================
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NewsService } from '../../../../core/services/news/news.service';
-import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
-import { Project } from '../../../../core/interfaces/project';
+import { ToastrService } from 'ngx-toastr';
+
+import { NewsService } from '../../../../core/services/news/news.service';
 import { News } from '../../../../core/interfaces/news';
 
+
+// ===================== Component =====================
 @Component({
   selector: 'app-news',
   standalone: true,
@@ -14,8 +17,11 @@ import { News } from '../../../../core/interfaces/news';
   styleUrl: './news.component.css'
 })
 export class NewsComponent implements OnInit {
-  errorMessage: string = ''
-  news: any[] = []
+
+  // ===================== Global States =====================
+
+  errorMessage: string = '';
+  news: News[] = [];
 
   isEditMode: boolean = false;
 
@@ -23,32 +29,57 @@ export class NewsComponent implements OnInit {
   selectedNews: News | null = null;
 
   videoFile: File | null = null;
+  imageFiles: File[] = [];
 
-  imageFiles: File[] = []
+  imgToDelete: string = '';
+  selectedImgeToDelete: boolean = false;
 
-  imgToDelete: string = ""
-  selectedImgeToDelete: boolean = false
 
-  // ============= form ================
+  // ===================== Reactive Form =====================
+
   addForm: FormGroup = new FormGroup({
     arTitle: new FormControl('', Validators.required),
     arDescription: new FormControl('', Validators.required),
     enTitle: new FormControl('', Validators.required),
     enDescription: new FormControl('', Validators.required),
+
     videoPath: new FormControl(null),
-    imagePaths: new FormControl([]),
-    ImagesToDelete: new FormControl(null)
-  })
+
+    imagePaths: new FormControl([], Validators.required),
+    ImagesToDelete: new FormControl(null),
+  });
 
 
-  constructor(private _newsService: NewsService, private toast: ToastrService) { }
+  // ===================== Constructor =====================
 
+  constructor(
+    private _newsService: NewsService,
+    private toast: ToastrService
+  ) { }
+
+
+  // ===================== Lifecycle =====================
 
   ngOnInit(): void {
-    this.getNews()
+    this.getNews();
   }
 
-  // ===================================================== start CRUD =========================================
+
+  // ===================== Toggle Required For Images =====================
+  toggleImageRequired() {
+    const control = this.addForm.get('imagePaths');
+
+    if (this.isEditMode) {
+      control?.clearValidators(); // ✅ في التعديل الصور مش إجبارية
+    } else {
+      control?.setValidators([Validators.required]); // ✅ في الإضافة الصور إجبارية
+    }
+
+    control?.updateValueAndValidity();
+  }
+
+
+  // ===================== File Handlers =====================
 
   onVideoSelected(event: any) {
     const file = event.target.files[0];
@@ -64,69 +95,81 @@ export class NewsComponent implements OnInit {
     }
   }
 
+
+  // ===================== UI Helpers =====================
+
   closeForm() {
-    this.isEditMode = false
-    this.addForm.reset()
+    this.isEditMode = false;
+    this.addForm.reset();
+    this.videoFile = null;
+    this.imageFiles = [];
   }
 
+
+  show(path: string) {
+    this.imgToDelete = this.imgToDelete === '' ? path : '';
+    this.selectedImgeToDelete = !this.selectedImgeToDelete;
+  }
+
+
+  // ===================== Get All News =====================
 
   getNews() {
-
     this._newsService.getAllNews().subscribe(res => {
-      this.news = res
-      console.log(res);
-
-    })
+      this.news = res;
+    });
   }
 
-  // ================= add ===================
+
+  // ===================== Add New =====================
 
   addNew() {
-    const formData = new FormData()
+    if (!this.addForm.valid) {
+      this.toast.error('بعض الحقول فارغة');
+      return;
+    }
 
-    formData.append('arTitle', this.addForm.value.arTitle)
-    formData.append('arDescription', this.addForm.value.arDescription)
-    formData.append('enTitle', this.addForm.value.enTitle)
-    formData.append('enDescription', this.addForm.value.enDescription)
+    const formData = new FormData();
 
+    // ✅ البيانات النصية
+    formData.append('arTitle', this.addForm.value.arTitle);
+    formData.append('arDescription', this.addForm.value.arDescription);
+    formData.append('enTitle', this.addForm.value.enTitle);
+    formData.append('enDescription', this.addForm.value.enDescription);
+
+    // ✅ الفيديو
     if (this.videoFile) {
       formData.append('videoFile', this.videoFile);
     }
 
-    // صور متعددة
+    // ✅ الصور
     if (this.imageFiles.length > 0) {
-      this.imageFiles.forEach((img) => {
+      this.imageFiles.forEach(img => {
         formData.append('imageFiles', img);
       });
     }
 
-    if (this.addForm.valid) {
-      this._newsService.addNew(formData).subscribe({
-        next: (res) => {
-
-        },
-        error: (err) => {
-          if (err.status) {
-            this.toast.error('انتهت الجلسة سجل الدخول مرة أخرى')
-          } else {
-            this.toast.error("حدث خطأ ما")
-          }
-        },
-        complete: () => {
-          // window.location.reload()
-        }
-      })
-    } else {
-      this.toast.error('بعض الحقول فارغة')
-    }
-
+    this._newsService.addNew(formData).subscribe({
+      next: () => this.toast.success('تم إضافة الخبر بنجاح ✅'),
+      error: (err) => {
+        err.status
+          ? this.toast.error('انتهت الجلسة، سجل الدخول مرة أخرى')
+          : this.toast.error('حدث خطأ ما');
+      },
+      complete: () => setTimeout(() => window.location.reload(), 1000)
+    });
   }
-  // ============================= edit ======================
 
-  editNew(news: any) {
+
+  // ===================== Edit Mode =====================
+
+  editNew(news: News) {
     this.isEditMode = true;
-    this.selectedNewsId = news.id;
-    this.selectedNews = news
+    this.selectedNewsId = news.id!;
+    this.selectedNews = news;
+
+    this.toggleImageRequired();
+
     this.addForm.patchValue({
       arTitle: news.arTitle,
       arDescription: news.arDescription,
@@ -136,10 +179,10 @@ export class NewsComponent implements OnInit {
 
     this.videoFile = null;
     this.imageFiles = [];
-    console.log(this.selectedNews);
-
   }
 
+
+  // ===================== Update =====================
 
   updateNew() {
     if (!this.selectedNewsId) {
@@ -147,140 +190,95 @@ export class NewsComponent implements OnInit {
       return;
     }
 
+    // ✅ اجبار المستخدم يضيف صورة لو مسح واحدة
+    const control = this.addForm.get('imagePaths');
+    if (this.imgToDelete !== '') {
+      control?.setValidators([Validators.required]);
+    }
+    control?.updateValueAndValidity();
+
+    if (!this.addForm.valid) {
+      this.toast.error('بعض الحقول فارغة');
+      return;
+    }
+
     const formData = new FormData();
 
-    // البيانات النصية
+    // ✅ البيانات النصية
     formData.append('id', this.selectedNewsId.toString());
     formData.append('arTitle', this.addForm.value.arTitle);
     formData.append('arDescription', this.addForm.value.arDescription);
     formData.append('enTitle', this.addForm.value.enTitle);
     formData.append('enDescription', this.addForm.value.enDescription);
 
-    // ✅ الفيديو (لو المستخدم اختار فيديو جديد)
+    // ✅ الفيديو
     if (this.videoFile) {
       formData.append('videoFile', this.videoFile);
     }
 
     // ✅ الصور الجديدة
     if (this.imageFiles.length > 0) {
-      this.imageFiles.forEach((img) => {
+      this.imageFiles.forEach(img => {
         formData.append('imageFiles', img);
       });
-    } else {
-
-      formData.append('imagePaths', this.addForm.value.imageFiles);
     }
 
-    // ✅ الصور المراد حذفها (array of string)
-    const imagesToDelete = this.addForm.value.ImagesToDelete;
-    if (imagesToDelete && imagesToDelete.length > 0) {
-      imagesToDelete.forEach((img: string) => {
-      });
-    }
-    console.log(imagesToDelete);
-
+    // ✅ الصور المحذوفة
     formData.append('ImagesToDelete', this.imgToDelete);
 
-    // ✅ إرسال الداتا
-    this._newsService.editNew(this.selectedNewsId, formData).subscribe({
-      next: (res) => {
-        this.toast.success('تم تحديث الخبر بنجاح ✅');
+
+    if (this.addForm.valid) {
+      
+      this._newsService.editNew(this.selectedNewsId, formData).subscribe({
+        next: () => this.toast.success('تم تحديث الخبر بنجاح ✅'),
+        error: (err) => {
+          err.status === 401
+            ? this.toast.error('انتهت الجلسة، سجل الدخول مرة أخرى')
+            : this.toast.error('حدث خطأ أثناء التحديث');
+        },
+        complete: () => setTimeout(() => window.location.reload(), 1000)
+      });
+    } else {
+      this.toast.error("بعض الحقول فارغة")
+    }
+  }
+
+
+  // ===================== Delete =====================
+
+  deleteNew(idx: number, id: number) {
+    this._newsService.deleteNew(id).subscribe({
+      next: () => {
+        this.toast.success('تم حذف الخبر بنجاح ✅');
+        this.news.splice(idx, 1);
       },
       error: (err) => {
-        if (err.status === 401) {
-          this.toast.error('انتهت الجلسة سجل الدخول مرة أخرى');
-        } else {
-          this.toast.error('حدث خطأ أثناء التحديث');
-        }
+        err.status === 401
+          ? this.toast.error('انتهت الجلسة، سجل الدخول مرة أخرى')
+          : this.toast.error('حدث خطأ أثناء الحذف');
       },
-      complete: () => {
-        // window.location.reload();
-      }
+      complete: () => setTimeout(() => location.reload(), 500)
     });
   }
 
 
-  show(path: string) {
-
-    if (this.imgToDelete == '') {
-      this.imgToDelete = path
-    }else{
-      this.imgToDelete = ''
-    }
-    console.log(this.imgToDelete);
-    
-    this.selectedImgeToDelete = !this.selectedImgeToDelete
-  }
-
-  // =============================delete======================
-  deleteNew(idx: number, id: number) {
-    this._newsService.deleteNew(id).subscribe({
-      next: (res) => {
-        this.toast.success("تم حذف الخبر بنجاح")
-        this.news.splice(idx, 1)
-      },
-      error: (err) => {
-
-        if (err.status == 401) {
-
-          this.toast.error('انتهت الجلسة سجل الدخول مرة أخري')
-        } else {
-          this.toast.error('حدث خطأأشناء الحذف')
-        }
-      },
-      complete: () => {
-      }
-    })
-  }
-
-
-  // ================================= submit ======================
+  // ===================== Submit =====================
 
   onSubmit() {
-
-    if (this.isEditMode) {
-      this.updateNew();
-    } else {
-      this.addNew();
-    }
+    this.isEditMode ? this.updateNew() : this.addNew();
   }
 
-  // ===================================================== end CRUD =========================================
 
-  // ================ english only ================
+  // ===================== Language Validation =====================
 
   allowEnglishOnly(event: any) {
-    const input = event.target;
-    input.value = input.value.replace(/[^a-zA-Z0-9 ]/g, '');
+    event.target.value = event.target.value.replace(/[^a-zA-Z0-9 ]/g, '');
   }
-  // ================ arabic only ================
 
   allowArabicOnly(event: any) {
-    const input = event.target;
-    input.value = input.value.replace(/[^ء-ي\s\u0621-\u064A]/g, '');
+    event.target.value = event.target.value.replace(/[^ء-ي\s\u0621-\u064A]/g, '');
   }
 
-  // =================== vedio only ==================
 
-  validateVideo(event: Event) {
-    const input = event.target as HTMLInputElement;
-    const file = input.files?.[0];
-
-    if (file) {
-      const isVideo = file.type.startsWith('video/');
-      const isTooLarge = file.size > 10 * 1024 * 1024; // 10 ميغابايت
-
-      if (!isVideo) {
-        this.errorMessage = 'الملف يجب أن يكون فيديو فقط';
-        input.value = '';
-      } else if (isTooLarge) {
-        this.errorMessage = 'الملف أكبر من 10 ميغابايت';
-        input.value = '';
-      } else {
-        this.errorMessage = '';
-
-      }
-    }
-  }
 
 }

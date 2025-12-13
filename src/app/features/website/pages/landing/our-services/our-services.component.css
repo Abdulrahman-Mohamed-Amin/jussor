@@ -47,7 +47,9 @@
   align-items: center;
   color: #fff;
 }
-
+.card-title{
+  text-align: center;
+}
 /* ======= ICON CIRCLE ======= */
 .icon-circle {
   width: 60px;
@@ -78,6 +80,7 @@
   font-size: 15px;
   color: var(--main);
   padding: 0 20px;
+  text-align: center;
 }
 
 /* ======= RESPONSIVE ======= */

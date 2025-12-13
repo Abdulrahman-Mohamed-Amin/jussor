@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-contact-sec',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './contact-sec.component.html',
   styleUrl: './contact-sec.component.css'
 })

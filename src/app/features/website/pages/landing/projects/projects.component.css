@@ -1,7 +1,7 @@
 section{
   position: relative;
   box-shadow: var(--shadow);
-  background: #fff;
+  background: #f5f6f9;
   /* background: linear-gradient(180deg, #fff, #f4f6f9); */
     
 }

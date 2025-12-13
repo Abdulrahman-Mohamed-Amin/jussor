@@ -62,7 +62,6 @@ header h1 {
 
 .chairman-text {
   flex: 1;
-  text-align: right;
 }
 
 .section-title-right {
@@ -165,7 +164,6 @@ header h1 {
 .stats-text {
   flex: 1;
   min-width: 260px;
-  text-align: right;
 }
 
 .stats-text p {

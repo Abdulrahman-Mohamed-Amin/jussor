@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CardComponent } from "../../../../../shared/card/card.component";
 import { Project } from '../../../../../core/interfaces/project';
 import { ProjectService } from '../../../../../core/services/projects/project.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CardComponent],
+  imports: [CardComponent , TranslateModule],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css'
 })

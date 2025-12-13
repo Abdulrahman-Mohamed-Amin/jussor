@@ -97,12 +97,28 @@ input::placeholder{
   border-radius: 50% ;
   cursor: pointer;
 }
-.img_cont:hover .delete{
+.img_cont.active .delete{
 color: red;
 transform: translateY(3px);
+}
+.img_cont.active  {
+  border: 2px solid red;
 }
 .img_delete_title{
   margin-bottom: 30px;
   text-align: center;
   color: var(--main);
+}
+.delete_files{
+  margin-top: 10px;
+}
+.delete_files span{
+  color: red;
+  font-size: 9px;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.delete_files input{
+  width: 20px;
+  height: 20px;
 }

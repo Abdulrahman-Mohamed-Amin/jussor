@@ -35,12 +35,15 @@ div h1{
 div p {
     color: #ffffffbe;
 }
+@media(max-width:991px){
+    div h1{
+        font-size: 35px;
+    }
+    
+}
 @media(max-width:768px){
     div{
         width: 80%;
-    }
-    div h1{
-        font-size: 35px;
     }
     section{
         height: 100vh;

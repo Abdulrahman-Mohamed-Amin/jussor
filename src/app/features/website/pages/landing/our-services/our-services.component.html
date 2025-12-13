@@ -1,61 +1,22 @@
 <div class="bg-white cont" id="services">
   <section class="services-section container">
 
-    <h2 class="title">خدماتنا</h2>
+    <h2 class="title">{{'SERVICES.TITLE' |translate}}</h2>
 
     <div class="services-wrapper">
 
       @for(service of services ; track $index; let i = $index){
       <div class="service-card">
         <div class="card-header">
-          <h3 class="card-title ">{{lang == 'ar' ? service.arTitle :  service.enTitle}}</h3>
+          <h3 class="card-title ">{{lang == 'ar' ? service.arTitle : service.enTitle}}</h3>
           <div class="icon-circle">
             <i [class]="icons[i]"></i>
           </div>
         </div>
-        <p class="gradient-text">{{lang == 'ar' ? service.arDescription :  service.enDescription}}</p>
+        <p class="gradient-text">{{lang == 'ar' ? service.arDescription : service.enDescription}}</p>
       </div>
       }
 
-      <!-- <div class="service-card">
-      <div class="card-header">
-        <h3 class="card-title">التشييد</h3>
-        <div class="icon-circle">
-          <i class="fa-solid fa-hard-hat"></i>
-        </div>
-      </div>
-      <p class="gradient-text">تنفيذ مشاريع عمرانية متطورة وفق أعلى المعايير الهندسية مع الالتزام بالجداول الزمنية والجودة التنفيذية.</p>
-    </div>
-
-    <div class="service-card">
-      <div class="card-header">
-        <h3 class="card-title ">إدارة المراكز التجارية</h3>
-        <div class="icon-circle">
-          <i class="fa-solid fa-store"></i>
-        </div>
-      </div>
-      <p class="gradient-text">تقديم إدارة شاملة للمراكز التجارية تشمل التشغيل والصيانة والتسويق لضمان استدامة النجاح وتعزيز تجربة الزوار الشرائية.</p>
-    </div>
-    
-    <div class="service-card">
-      <div class="card-header">
-        <h3 class="card-title">إدارة الفنادق</h3>
-        <div class="icon-circle">
-          <i class="fa-solid fa-hotel"></i>
-        </div>
-      </div>
-      <p class="gradient-text">تطوير وإدارة الفنادق والشقق الفندقية بما يضمن تقديم خدمات راقية تلبي احتياجات الضيوف.</p>
-    </div>
-    
-    <div class="service-card">
-      <div class="card-header">
-        <h3 class="card-title">المنتجات التقنية</h3>
-        <div class="icon-circle">
-          <i class="fa-solid fa-microchip"></i>
-        </div>
-      </div>
-      <p class="gradient-text">ابتكار وإدارة الحلول والتقنيات الحديثة وتطبيقات التحول الرقمي لدعم مختلف أعمال الشركات وتعزيز الكفاءة التشغيلية.</p>
-    </div> -->
 
     </div>
   </section>

@@ -3,11 +3,13 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { OurservicesService } from '../../../../core/services/our-services/ourservices.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { News } from '../../../../core/interfaces/news';
+import { Service } from '../../../../core/interfaces/service';
 
 @Component({
   selector: 'app-our-services',
   standalone: true,
-  imports: [ReactiveFormsModule , CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './our-services.component.html',
   styleUrl: './our-services.component.css'
 })
@@ -21,6 +23,12 @@ export class OurServicesComponent implements OnInit {
 
   imageFiles: File[] = [];
   errorMessage: string = ''
+
+  selectedServiceId: number | null = null;
+  selectedService: Service | null = null;
+
+  imgToDelete: string = ""
+  selectedImgeToDelete: boolean = false
   // ============= form ================
   addForm: FormGroup = new FormGroup({
     arTitle: new FormControl('', Validators.required),
@@ -28,13 +36,26 @@ export class OurServicesComponent implements OnInit {
     enTitle: new FormControl('', Validators.required),
     enDescription: new FormControl('', Validators.required),
     VideoPath: new FormControl(null),
-    ImageFiles: new FormControl([]),
+    ImageFiles: new FormControl([], Validators.required),
+    ImagesToDelete: new FormControl(null),
   })
 
   constructor(private _services: OurservicesService, private toast: ToastrService) { }
 
   ngOnInit(): void {
     this.getServices()
+  }
+
+  toggleImageRequired() {
+    const control = this.addForm.get('ImageFiles');
+
+    if (this.isEditMode) {
+      control?.clearValidators(); // ✅ في التعديل الصور مش إجبارية
+    } else {
+      control?.setValidators([Validators.required]); // ✅ في الإضافة الصور إجبارية
+    }
+
+    control?.updateValueAndValidity();
   }
 
   // ===================================================== start CRUD =========================================
@@ -53,7 +74,7 @@ export class OurServicesComponent implements OnInit {
     }
   }
 
-  closeForm(){
+  closeForm() {
     this.isEditMode = false
     this.addForm.reset()
   }
@@ -77,41 +98,45 @@ export class OurServicesComponent implements OnInit {
     formData.append('enTitle', this.addForm.value.enTitle)
     formData.append('enDescription', this.addForm.value.enDescription)
 
-    if (this.videoFile) {
+    if (this.videoFile instanceof File) {
       formData.append('videoFile', this.videoFile);
     }
 
-    // صور متعددة
-    if (this.imageFiles.length > 0) {
+    // ✅✅ الصور الجديدة → تتبعت فقط لو فيه صور فعلية
+    if (this.imageFiles && this.imageFiles.length > 0) {
       this.imageFiles.forEach((img) => {
         formData.append('imageFiles', img);
       });
     }
 
-    if(this.addForm.valid){
-          this._services.addService(formData).subscribe({
-      next: (res) => {
-        console.log(res);
-      },
-      error: (err) => {
-        console.log(err);
+    if (this.addForm.valid) {
+      this._services.addService(formData).subscribe({
+        next: (res) => {
+          this.toast.success("تمت اضافة الخدمة بنجاح")
+        },
+        error: (err) => {
 
-      },
-      complete: () => {
-        window.location.reload()
-      }
-    })
-    }else{
+          if (err.status === 401) {
+            this.toast.error('انتهت الجلسة سجل الدخول مرة أخرى');
+          } else {
+            this.toast.error('حدث خطأ أثناء التحديث');
+          }
+        },
+        complete: () => {
+          window.location.reload()
+        }
+      })
+    } else {
       this.toast.error('بعض الحقول فارغة')
     }
 
   }
-  // ============================= edit ======================
+  // =============================================================== edit ========================================================
 
   editService(service: any) {
     this.isEditMode = true;
     this.selectedProjectId = service.id;
-
+    this.toggleImageRequired()
     this.addForm.patchValue({
       arTitle: service.arTitle,
       arDescription: service.arDescription,
@@ -119,46 +144,89 @@ export class OurServicesComponent implements OnInit {
       enDescription: service.enDescription,
     });
 
+    this.selectedServiceId = service.id
+    this.selectedService = service
     this.videoFile = null;
     this.imageFiles = [];
 
   }
 
-  updateServic() {
-    const formData = new FormData()
+  updateService() {
+    if (!this.selectedServiceId) {
+      this.toast.error('لم يتم تحديد الخبر');
+      return;
+    }
+
+    const formData = new FormData();
+
+    // البيانات النصية
+    formData.append('id', this.selectedServiceId.toString());
     formData.append('arTitle', this.addForm.value.arTitle);
     formData.append('arDescription', this.addForm.value.arDescription);
     formData.append('enTitle', this.addForm.value.enTitle);
     formData.append('enDescription', this.addForm.value.enDescription);
 
-    if (this.videoFile) {
-      formData.append('videoPath', this.videoFile);
+    if (this.videoFile instanceof File) {
+      formData.append('videoFile', this.videoFile);
     }
 
-    // صور متعددة
-    if (this.imageFiles.length > 0) {
+    // ✅✅ الصور الجديدة → تتبعت فقط لو فيه صور فعلية
+    if (this.imageFiles && this.imageFiles.length > 0) {
       this.imageFiles.forEach((img) => {
         formData.append('imageFiles', img);
       });
     }
 
+    // ✅ الصور المراد حذفها (array of string)
 
-    this._services.editService(this.selectedProjectId!, formData).subscribe({
-      next: (res) => {
-        this.addForm.reset()
-        this.isEditMode = false;
-        this.selectedProjectId = null;
-        this.toast.success("تم تعديل الخدمة بنجاح")
-      },
-      error: (err) => {
-        console.log(err);
-      },
-      complete:() =>{
-        window.location.reload()
-      }
-    })
+    formData.append('ImagesToDelete', this.imgToDelete);
 
 
+    const control = this.addForm.get('ImageFiles');
+
+    if (this.imgToDelete !== '') {
+      control?.setValidators([Validators.required]); // ✅ في الإضافة الصور إجبارية
+    }
+
+    control?.updateValueAndValidity();
+
+
+    // console.log(imagesToDelete);
+
+    if (this.addForm.valid) {
+      // ✅ إرسال الداتا
+      this._services.editService(this.selectedServiceId, formData).subscribe({
+        next: (res) => {
+          this.toast.success('تم تحديث الخبر بنجاح ✅');
+        },
+        error: (err) => {
+          if (err.status === 401) {
+            this.toast.error('انتهت الجلسة سجل الدخول مرة أخرى');
+          } else {
+            this.toast.error('حدث خطأ أثناء التحديث');
+          }
+        },
+        complete: () => {
+          // window.location.reload();
+        }
+      });
+    } else {
+      this.toast.error('بعض الحقول فارغة')
+    }
+  }
+
+
+
+  show(path: string) {
+
+    if (this.imgToDelete == '') {
+      this.imgToDelete = path
+    } else {
+      this.imgToDelete = ''
+    }
+    console.log(this.imgToDelete);
+
+    this.selectedImgeToDelete = !this.selectedImgeToDelete
   }
   // =============================delete======================
   deleteService(idx: number, id: number) {
@@ -168,15 +236,18 @@ export class OurServicesComponent implements OnInit {
         this.services.splice(idx, 1)
       },
       error: (err) => {
-        
-        if(err.status == 401){
+
+        if (err.status == 401) {
 
           this.toast.error('انتهت الجلسة سجل الدخول مرة أخري')
-        }else{
+        } else {
           this.toast.error('حدث خطأأشناء الحذف')
         }
       },
       complete: () => {
+        setTimeout(() => {
+          location.reload()
+        }, 500);
       }
     })
   }
@@ -185,9 +256,9 @@ export class OurServicesComponent implements OnInit {
   // ================================= submit ======================
 
   onSubmit() {
- 
+
     if (this.isEditMode) {
-      this.updateServic();
+      this.updateService();
     } else {
       this.addService();
     }

@@ -32,16 +32,7 @@
   transform: scale(1.08);
 }
 
-.project-tag {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  padding: 6px 14px;
-  background: var(--blue);
-  color: #fff;
-  font-size: 12px;
-  border-radius: 12px;
-}
+
 
 .project-content {
   padding: 20px;

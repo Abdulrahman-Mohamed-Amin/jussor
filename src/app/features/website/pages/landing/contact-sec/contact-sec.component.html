@@ -2,16 +2,16 @@
 
   <div class="contact-container container">
 
-    <h2 class="title text-white">تواصل معنا</h2>
+    <h2 class="title text-white">{{"CONTACT.TITLE" | translate}}</h2>
 
     <div class="contact-wrapper">
 
       <div class="contact-info">
-        <h3>معلومات الاتصال</h3>
+        <h3>{{"CONTACT.FORM.TITLE" | translate}}</h3>
 
         <div class="info-item">
           <i class="fa-solid fa-location-dot"></i>
-          <span>جدة – المملكة العربية السعودية</span>
+          <span>{{"CONTACT.FORM.ADDRESS" | translate}}</span>
         </div>
 
         <div class="info-item">
@@ -33,12 +33,12 @@
       </div>
 
       <form class="contact-form">
-        <input type="text" placeholder="الاسم الكامل" required>
-        <input type="email" placeholder="البريد الإلكتروني" required>
-        <input type="text" placeholder="رقم الجوال" required>
-        <textarea placeholder="رسالتك" rows="4" required></textarea>
+        <input type="text" [attr.placeholder]="'CONTACT.FORM.NAME' | translate" required>
+        <input type="email" [attr.placeholder]="'CONTACT.FORM.EMAIL' | translate" required>
+        <input type="text" [attr.placeholder]="'CONTACT.FORM.PHONE' | translate" required>
+        <textarea [attr.placeholder]="'CONTACT.FORM.MESSAGE' | translate" rows="4" required></textarea>
 
-        <button type="submit" class="contact-btn">إرسال</button>
+        <button type="submit" class="contact-btn">{{"CONTACT.FORM.SEND" | translate}}</button>
       </form>
 
     </div>

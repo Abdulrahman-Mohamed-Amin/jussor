@@ -36,7 +36,7 @@
 
 *{
       transition: 0.3s;
-      direction: rtl;
+      /* direction: rtl; */
       font-family: 'NOOR', sans-serif;
       box-sizing: border-box;
 }
@@ -176,3 +176,60 @@ span.requierd{
   font-weight: bold !important;
   color: var(--sec2) !important;
 }
+
+
+
+/* ================================================ التنسيقات الخاصة بتغيير اللغة==========================  */
+
+
+/* =================== card coomponent ==================== */
+
+.project-tag {
+  position: absolute;
+  bottom: 12px;
+  padding: 6px 14px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 12px;
+  border-radius: 12px;
+}
+html.ar .project-tag {
+  right: 12px;
+  
+}
+html.en .project-tag {
+  left: 12px;
+}
+
+/* =================== card coomponent ==================== */
+
+
+/* =================== all services coomponent ==================== */
+.service-block {
+  display: flex;
+  border-bottom: 3px solid var(--main);
+  padding: 30px 0;
+  position: relative;
+  gap: 30px;
+}
+html.ar .service-block{
+    justify-content: space-between;
+}
+html.en .service-block .sb-left{
+  order: 1;
+}
+html.en .service-block .sb-right{
+  order: 0;
+}
+
+@media(max-width:768px){
+  html.en .service-block .sb-left{
+    order: 0;
+  }
+  html.en .service-block .sb-right{
+    order: 1;
+  }
+
+}
+/* =================== all services coomponent ==================== */
+

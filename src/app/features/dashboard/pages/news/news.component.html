@@ -1,7 +1,7 @@
 <div class="container first-form">
   <form class="" [formGroup]="addForm" (ngSubmit)="onSubmit()" [ngClass]="{'edit_form': isEditMode}">
     @if (isEditMode) {
-      <i class="fas fa-xmark close" (click)="closeForm()"></i>
+    <i class="fas fa-xmark close" (click)="closeForm()"></i>
     }
     <h2>{{ isEditMode ? 'تعديل' : 'إضافة' }} خبر </h2>
     <div class="row">
@@ -10,14 +10,8 @@
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="artitle">اسم الخبر عربي<span class="requierd">(مطلوب)</span> <span>*</span></label>
-          <input
-            type="text"
-            id="artitle"
-            class="form-control"
-            (input)="allowArabicOnly($event)"
-            placeholder="الادخال باللغة العربية فقط"
-            formControlName="arTitle"
-          />
+          <input type="text" id="artitle" class="form-control" (input)="allowArabicOnly($event)"
+            placeholder="الادخال باللغة العربية فقط" formControlName="arTitle" />
         </div>
       </div>
       <!--===================== form groub==================  -->
@@ -25,14 +19,8 @@
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="entitle">اسم الخبر انجليزي<span class="requierd">(مطلوب)</span> <span>*</span></label>
-          <input
-            type="text"
-            id="entitle"
-            class="form-control"
-            (input)="allowEnglishOnly($event)"
-            placeholder="الادخال باللغة الانجليزية فقط"
-            formControlName="enTitle"
-          />
+          <input type="text" id="entitle" class="form-control" (input)="allowEnglishOnly($event)"
+            placeholder="الادخال باللغة الانجليزية فقط" formControlName="enTitle" />
         </div>
       </div>
 
@@ -41,14 +29,8 @@
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="ardes">وصف الخبر عربي<span class="requierd">(مطلوب)</span> <span>*</span></label>
-          <input
-            type="text"
-            id="ardes"
-            class="form-control"
-            (input)="allowArabicOnly($event)"
-            placeholder="الادخال باللغة العربية فقط"
-            formControlName="arDescription"
-          />
+          <input type="text" id="ardes" class="form-control" (input)="allowArabicOnly($event)"
+            placeholder="الادخال باللغة العربية فقط" formControlName="arDescription" />
         </div>
       </div>
 
@@ -57,33 +39,21 @@
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="endes">وصف الخبر انجليزي<span class="requierd">(مطلوب)</span> <span>*</span></label>
-          <input
-            type="text"
-            id="endes"
-            class="form-control"
-            (input)="allowEnglishOnly($event)"
-            placeholder="الادخال باللغة الانجليزية فقط"
-            formControlName="enDescription"
-          />
+          <input type="text" id="endes" class="form-control" (input)="allowEnglishOnly($event)"
+            placeholder="الادخال باللغة الانجليزية فقط" formControlName="enDescription" />
         </div>
       </div>
 
-            <!--===================== form groub==================  -->
+      <!--===================== form groub==================  -->
 
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="vedio">اختر فيديو <span>*</span></label>
-          <input
-            type="file"
-            id="vedio"
-            class="form-control"
-            (change)="onVideoSelected($event)"
-            placeholder="فيديو فقط"
-            formControlName="videoPath"
-          />
+          <input type="file" id="vedio" accept="video/*" class="form-control" (change)="onVideoSelected($event)" placeholder="فيديو فقط"
+            formControlName="videoPath" />
         </div>
         @if(errorMessage){
-          <div class="text-danger error">{{errorMessage}}</div>
+        <div class="text-danger error">{{errorMessage}}</div>
         }
       </div>
       <!--===================== form groub==================  -->
@@ -91,25 +61,29 @@
       <div class="col-md-6 col-12">
         <div class="form-group">
           <label for="status">اختر صورة للخبر<span class="requierd">(مطلوب)</span> <span>*</span></label>
-          <input type="file" accept="image/*"  class="form-control" formControlName="imagePaths" id="images" (change)="onImagesSelected($event)">
+          <input type="file" accept="image/*" class="form-control" formControlName="imagePaths" id="images"
+            (change)="onImagesSelected($event)">
         </div>
-        
+
       </div>
       <!--===================== form groub==================  -->
+      @if(selectedNews){
 
-          @if(selectedNews && isEditMode){
-      <div class="row gy-4">
-      <h4 class="img_delete_title" >صور الخبر</h4>
-     
-      <div class="col-4">
-        <div class="img_cont" [ngClass]="{'active' : selectedImgeToDelete}">
-          <i class="fas fa-trash delete" ></i>
-          <img [src]="'https://realstatesaudi.runasp.net' + selectedNews.imagePaths[0]" alt="" (click)="show(selectedNews.imagePaths[0])">
+        @if(selectedNews.imagePaths.length > 0 && isEditMode){
+        <div class="row gy-4">
+          <h4 class="img_delete_title">صور الخبر</h4>
+  
+          <div class="col-4">
+            <div class="img_cont" [ngClass]="{'active' : selectedImgeToDelete}">
+              <i class="fas fa-trash delete"></i>
+              <img [src]="'https://realstatesaudi.runasp.net' + selectedNews.imagePaths[0]" alt=""
+                (click)="show(selectedNews.imagePaths[0])">
+            </div>
+          </div>
+  
         </div>
-      </div>
-      
-    </div>
-    }
+        }
+      }
 
     </div>
     <button class="dash_btn">{{ isEditMode ? 'تعديل' : 'إضافة' }}</button>
@@ -117,7 +91,7 @@
 
 
   @if(isEditMode){
-    <div class="lay"></div>
+  <div class="lay"></div>
   }
 </div>
 
@@ -125,12 +99,12 @@
 <!-- ========================== table ==================== -->
 
 <div class="dash_table container">
-    <h2 class="mt-5">الخدمات الموجودة</h2>
+  <h2 class="mt-5">الاخبار الموجودة الموجودة</h2>
 
   <table class="project-table">
     <thead>
       <tr>
-        <th>اسم الخدمة</th>
+        <th>اسم الخبر</th>
         <th>الإجراءات</th>
       </tr>
     </thead>
