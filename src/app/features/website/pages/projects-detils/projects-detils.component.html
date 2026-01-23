@@ -20,7 +20,7 @@
           translate}}</a>
         }
         @if(project?.locationUrl){
-        <a class="project-btn mx-3" [href]="url + project?.locationUrl" target="_blank"> {{"PROJECT.LOCATION" |
+        <a class="project-btn mx-3" [href]="project?.locationUrl" target="_blank"> {{"PROJECT.LOCATION" |
           translate}}</a>
         }
       </div>
@@ -73,14 +73,14 @@
 
   </div>
 
-  <iframe
+  <!-- <iframe
   width="100%"
   height="300"
   style="border:0"
   loading="lazy"
   allowfullscreen
   src="https://www.google.com/maps?q=21.56650558497238, 39.15063712746945&output=embed">
-</iframe>
+</iframe> -->
 </section>
 
   <app-footer></app-footer>

@@ -31,6 +31,8 @@ export class AllServicesComponent {
   getServices() {
     this._services.getAllServices().subscribe((res) => {
       this.services = res
+      console.log(res);
+      
     })
 
 

@@ -5,15 +5,18 @@
 
     <div class="projects-grid">
 
-      <div class="project-card modern" routerLink="/Contracting">
-        <h3>{{"PROJECT_FIELDS.GENERAL_CONTRACTING.TITLE" | translate}}</h3>
+      @for(type of types ; track type.id){
 
-        <button class="project-btn">
-          {{ "PROJECT_FIELDS.GENERAL_CONTRACTING.BUTTON" | translate }}
-        </button>
-      </div>
+        <div class="project-card modern">
+          <h3>{{lang == 'ar' ? type.arName : type.enName}}</h3>
+  
+          <button class="project-btn" (click)="goToPage(type)">
+            {{ "PROJECT_FIELDS.GENERAL_CONTRACTING.BUTTON" | translate }}
+          </button>
+        </div>
+      }
 
-      <div class="project-card modern" routerLink="/Security-Projects">
+      <!-- <div class="project-card modern" routerLink="/Security-Projects">
         <h3>{{"PROJECT_FIELDS.SECURITY_SAFETY.TITLE" | translate}} </h3>
 
         <button class="project-btn" routerLink="/Security-Projects">
@@ -28,7 +31,7 @@
         <button class="project-btn">
          {{"PROJECT_FIELDS.CENTER_MANAGEMENT.BUTTON" | translate}} 
         </button>
-      </div>
+      </div> -->
 
     </div>
   </div>

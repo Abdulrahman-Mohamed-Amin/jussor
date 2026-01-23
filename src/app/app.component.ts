@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs';
+import { MetaService } from './core/services/meta-tags/meta.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +11,27 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'jsour';
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private seo: MetaService
+  ) {}
+
+  ngOnInit() {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => {
+        let currentRoute = this.route;
+        while (currentRoute.firstChild) {
+          currentRoute = currentRoute.firstChild;
+        }
+
+        const seoData = currentRoute.snapshot.data['seo'];
+        console.log(seoData);
+        
+        if (seoData) {
+          this.seo.update(seoData);
+        }
+      });
+  }
 }

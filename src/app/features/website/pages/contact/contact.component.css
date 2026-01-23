@@ -76,11 +76,15 @@
 .info-line {
   color: #333;
   font-size: 15px;
+  gap: 10px;
 }
 
-.icon24 {
+i {
   width: 26px;
   height: 26px;
+  font-size: 25px;
+  text-align: center;
+  line-height: 26px;
   color: var(--main);
 }
 

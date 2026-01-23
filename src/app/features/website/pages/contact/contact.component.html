@@ -1,135 +1,124 @@
 <app-header></app-header>
 <section class="contact-hero">
-<h1>{{"CONTACT.TITLE" | translate}}</h1>
-<p>{{"CONTACT.ABOUT_SEC.DESC" | translate}}</p>
+  <h1>{{"CONTACT.TITLE" | translate}}</h1>
+  <p>{{"CONTACT.ABOUT_SEC.DESC" | translate}}</p>
 </section>
 <div class="bg-white">
-    
+
 
   <!-- form -->
-<section class="contact-layout container py-5">
+  <section class="contact-layout container py-5">
 
-  <div class="row g-4">
+    <div class="row g-4">
 
-    <!-- ================= FORM (8 columns) ================= -->
-    <div class="col-lg-8 col-md-7 col-12">
-      <div class="form-panel p-4">
+      <!-- ================= FORM (8 columns) ================= -->
+      <div class="col-lg-8 col-md-7 col-12">
+        <div class="form-panel p-4">
 
-        <h2 class="sec-head mb-4">{{"CONTACT.ABOUT_SEC.SEND" | translate}}</h2>
+          <h2 class="sec-head mb-4">{{"CONTACT.ABOUT_SEC.SEND" | translate}}</h2>
 
-        <form class="row g-3">
+          <form class="row g-3">
 
-          <!-- NAME -->
-          <div class="col-md-6">
-            <label class="form-label">{{"CONTACT.FORM.NAME" | translate}}</label>
-            <input type="text" class="form-control modern-inp">
+            <!-- NAME -->
+            <div class="col-md-6">
+              <label class="form-label">{{"CONTACT.FORM.NAME" | translate}}</label>
+              <input type="text" class="form-control modern-inp">
+            </div>
+
+            <!-- EMAIL -->
+            <div class="col-md-6">
+              <label class="form-label">{{"CONTACT.FORM.EMAIL" | translate}}</label>
+              <input type="email" class="form-control modern-inp">
+            </div>
+
+            <!-- PHONE -->
+            <div class="col-md-6">
+              <label class="form-label">{{"CONTACT.FORM.PHONE" | translate}}</label>
+              <input type="text" class="form-control modern-inp" placeholder="+966">
+            </div>
+
+            <!-- SUBJECT -->
+            <div class="col-md-6">
+              <label class="form-label">{{"CONTACT.FORM.SUBJECT" | translate}}</label>
+              <input type="text" class="form-control modern-inp">
+            </div>
+
+            <!-- MESSAGE -->
+            <div class="col-12">
+              <label class="form-label">{{"CONTACT.FORM.MESSAGE" | translate}}</label>
+              <textarea class="form-control modern-inp" rows="6"></textarea>
+            </div>
+
+            <div class="col-12">
+              <button class="send-btn-modern w-100">{{"CONTACT.FORM.SEND" | translate}}</button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+      <!-- ================= INFO (4 columns) ================= -->
+      <div class="col-lg-4 col-md-5 col-12">
+        <div class="info-panel p-4">
+
+          <h2 class="sec-head mb-4">{{"CONTACT.FORM.TITLE" | translate}}</h2>
+
+          <!-- PHONE -->
+          <div class="info-line d-flex align-items-center mb-3">
+            <i class="fas fa-phone "></i>
+            <span>966555846094+</span>
           </div>
 
           <!-- EMAIL -->
-          <div class="col-md-6">
-            <label class="form-label">{{"CONTACT.FORM.EMAIL" | translate}}</label>
-            <input type="email" class="form-control modern-inp" >
+          <div class="info-line d-flex align-items-center mb-3">
+            <i class="fas fa-envelope"></i>
+            <span>jusur321&#64;  gmail.com</span>
           </div>
 
-          <!-- PHONE -->
-          <div class="col-md-6">
-            <label class="form-label">{{"CONTACT.FORM.PHONE" | translate}}</label>
-            <input type="text" class="form-control modern-inp" placeholder="+966">
+          <!-- LOCATION -->
+          <div class="info-line d-flex align-items-center mb-3">
+            <i class="fas fa-location-dot"></i>
+            <span>{{"FOOTER.CONTACT.LOCATION" |translate}}</span>
           </div>
 
-          <!-- SUBJECT -->
-          <div class="col-md-6">
-            <label class="form-label">{{"CONTACT.FORM.SUBJECT" | translate}}</label>
-            <input type="text" class="form-control modern-inp">
+          <!-- TIME -->
+          <div class="info-line d-flex align-items-center mb-4">
+            <i class="far fa-clock"></i>
+            <span>{{"CONTACT.ABOUT_SEC.WORK" | translate}}</span>
           </div>
 
-          <!-- MESSAGE -->
-          <div class="col-12">
-            <label class="form-label">{{"CONTACT.FORM.MESSAGE" | translate}}</label>
-            <textarea class="form-control modern-inp" rows="6"></textarea>
-          </div>
+          <!-- <h3 class="social-head mb-3">{{"CONTACT.ABOUT_SEC.FOLLOW" | translate}}</h3>
 
-          <div class="col-12">
-            <button class="send-btn-modern w-100">{{"CONTACT.FORM.SEND" | translate}}</button>
-          </div>
+          <div class="d-flex gap-3">
+            <a class="social-round" href="#">
+              <svg viewBox="0 0 24 24">
+                <path fill="currentColor"
+                  d="M18.9 3.1h2.3l-5 5.7 5.8 8h-4.5l-3.5-4.8-4 4.8H4.6l5.3-6.2L4.3 3.1H9l3.2 4.4 3.4-4.4Z" />
+              </svg>
+            </a>
 
-        </form>
+            <a class="social-round" href="#">
+              <svg viewBox="0 0 24 24">
+                <path fill="currentColor"
+                  d="M4.98 3.5c1.4 0 2.52 1.12 2.52 2.5S6.38 8.5 4.98 8.5A2.5 2.5 0 0 1 2.5 6 2.5 2.5 0 0 1 4.98 3.5Zm.02 4.9H2V21h3V8.4Zm5 0h-3v12.6h3v-6.7c0-3.5 4.5-3.8 4.5 0V21h3v-7.7c0-6.2-7-6-10.5-3v-1.9Z" />
+              </svg>
+            </a>
 
+            <a class="social-round" href="#">
+              <svg viewBox="0 0 24 24">
+                <path fill="currentColor"
+                  d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 6.5A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5Zm6.2-2a1.2 1.2 0 1 0 1.2 1.2 1.2 1.2 0 0 0-1.2-1.2Z" />
+              </svg>
+            </a>
+          </div> -->
+
+        </div>
       </div>
+
     </div>
 
-    <!-- ================= INFO (4 columns) ================= -->
-    <div class="col-lg-4 col-md-5 col-12">
-      <div class="info-panel p-4">
-
-        <h2 class="sec-head mb-4">{{"CONTACT.FORM.TITLE" | translate}}</h2>
-
-        <!-- PHONE -->
-        <div class="info-line d-flex align-items-center mb-3">
-          <svg class="icon24" viewBox="0 0 24 24">
-            <path d="M6.6 4.4 10 4l3 4-2 2c.4 1.2 1 2.4 1.9 3.4s2.1 1.8 3.4 2.2l2-2 4 3-.3 3.4c-.1 1-1 1.6-2 1.6C10.8 22 2 13.2 2 3.9 2 2.9 2.7 2 3.7 2l2.9 2.4Z" fill="currentColor"/>
-          </svg>
-          <span>+966 54 000 0000</span>
-        </div>
-
-        <!-- EMAIL -->
-        <div class="info-line d-flex align-items-center mb-3">
-          <svg class="icon24" viewBox="0 0 24 24">
-            <path d="M4 4h16v16H4V4Zm8 9.5 8-5v10l-8-5Zm-8-5 8 5-8 5V8.5Z" fill="currentColor"/>
-          </svg>
-          <span>infocompany.com</span>
-        </div>
-
-        <!-- LOCATION -->
-        <div class="info-line d-flex align-items-center mb-3">
-          <svg class="icon24" viewBox="0 0 24 24">
-            <path d="M12 2c4.4 0 8 3.6 8 8 0 5.3-8 12-8 12S4 15.3 4 10c0-4.4 3.6-8 8-8Zm0 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" fill="currentColor"/>
-          </svg>
-          <span>{{"CONTACT.FORM.ADDRESS" | translate}}</span>
-        </div>
-
-        <!-- TIME -->
-        <div class="info-line d-flex align-items-center mb-4">
-          <svg class="icon24" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="10" stroke="currentColor" fill="none" stroke-width="1.4"/>
-            <path d="M12 6v6l3.5 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-          </svg>
-          <span>{{"CONTACT.ABOUT_SEC.WORK" | translate}}</span>
-        </div>
-
-        <h3 class="social-head mb-3">{{"CONTACT.ABOUT_SEC.FOLLOW" | translate}}</h3>
-
-        <div class="d-flex gap-3">
-          <!-- X -->
-          <a class="social-round" href="#">
-            <svg viewBox="0 0 24 24">
-              <path fill="currentColor" d="M18.9 3.1h2.3l-5 5.7 5.8 8h-4.5l-3.5-4.8-4 4.8H4.6l5.3-6.2L4.3 3.1H9l3.2 4.4 3.4-4.4Z"/>
-            </svg>
-          </a>
-
-          <!-- LinkedIn -->
-          <a class="social-round" href="#">
-            <svg viewBox="0 0 24 24">
-              <path fill="currentColor"
-              d="M4.98 3.5c1.4 0 2.52 1.12 2.52 2.5S6.38 8.5 4.98 8.5A2.5 2.5 0 0 1 2.5 6 2.5 2.5 0 0 1 4.98 3.5Zm.02 4.9H2V21h3V8.4Zm5 0h-3v12.6h3v-6.7c0-3.5 4.5-3.8 4.5 0V21h3v-7.7c0-6.2-7-6-10.5-3v-1.9Z"/>
-            </svg>
-          </a>
-
-          <!-- Instagram -->
-          <a class="social-round" href="#">
-            <svg viewBox="0 0 24 24">
-              <path fill="currentColor"
-              d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 6.5A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 8.5Zm6.2-2a1.2 1.2 0 1 0 1.2 1.2 1.2 1.2 0 0 0-1.2-1.2Z"/>
-            </svg>
-          </a>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-</section>
+  </section>
 
 
   <!-- why to contact us  -->
@@ -160,14 +149,9 @@
   <section class="map-section container pb-4">
     <h2 class="section-title mb-3">{{'CONTACT.ABOUT_SEC.LOCATION' |translate}}</h2>
     <iframe
-      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1497.577303751609!2d39.15362072289255!3d21.58096531197836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sar!2ssa!4v1763743241450!5m2!1sar!2ssa"
-      class="w-100"
-      height="200"
-      style="border: 0"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3536.799397665277!2d39.182208224940595!3d21.557005680227796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c3d03f2ab7b643%3A0xc63518644057965b!2z2KjYsdisINio2LrZhNmBINmD2YrYsdmB!5e1!3m2!1sar!2ssa!4v1765829041774!5m2!1sar!2ssa"
+      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
   </section>
 </div>
 
